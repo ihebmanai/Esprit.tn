@@ -11,20 +11,21 @@ export default {
     },
     {
       name: "Page Acceuil",
+      icon:"fa fa-home",
       children: [
         {
           name: "Carrousel",
-          icon: "none",
+          icon: "fa fa-ellipsis-h",
           children: [
             {
               name: "Ajouter",
               url: "/ajouter",
-              icon: "none"
+              icon: "fa fa-plus"
             },
             {
               name: "Afficher",
               url: "/afficher",
-              icon: "none"
+              icon: "fa fa-bars"
             },
           ]
         },
@@ -32,93 +33,146 @@ export default {
     },
     {
       name: "Formations",
-      icon: "none",
+      icon: "fa fa-mortar-board",
       children: [
         {
           name: "Ajouter",
           url: "/ajouter",
-          icon: "none"
+          icon: "fa fa-plus"
         },
         {
           name: "Afficher",
           url: "/afficher",
-          icon: "none"
+          icon: "fa fa-bars"
         },
       ]
     },
     {
       name: "Evénements",
-      icon: "none",
+      icon: "fa fa-quote-right",
       children: [
         {
           name: "Ajouter",
           url: "/ajouter",
-          icon: "none"
+          icon: "fa fa-plus"
         },
         {
           name: "Afficher",
           url: "/afficher",
-          icon: "none"
+          icon: "fa fa-bars"
         },
       ]
     },
     {
       name: "Actualités",
-      icon: "none",
+      icon: "fa fa-rss",
       children: [
         {
           name: "Ajouter",
-          url: "/ajouter",
-          icon: "none"
+          url: "/actualite/ajouter",
+          icon: "fa fa-plus"
         },
         {
           name: "Afficher",
-          url: "/afficher",
-          icon: "none"
+          url: "/actualite",
+          icon: "fa fa-bars"
         },
       ]
     },
     {
       name: "Calendrier",
+      icon:"fa fa-calendar"
     },
     {
-      name: "SERVICES DE L’ÉCOLE",
+      name: "Services de l'école",
+      icon:"fa fa-rocket"
     },
     {
-      name: "PRESSE",
-      icon: "none",
+      name: "Presse",
+      icon: "fa fa-newspaper-o",
       children: [
         {
           name: "Rapports d'Activités",
           url: "/ajouter",
-          icon: "none"
+          icon: "fa fa-print",
+          children: [
+            {
+              name: "Ajouter",
+              url: "/ajouter",
+              icon: "fa fa-plus"
+            },
+            {
+              name: "Afficher",
+              url: "/afficher",
+              icon: "fa fa-bars"
+            },
+          ]
         },
         {
           name: "Articles",
           url: "/afficher",
-          icon: "none"
+          icon: "fa fa-print",
+          children: [
+            {
+              name: "Ajouter",
+              url: "/ajouter",
+              icon: "fa fa-plus"
+            },
+            {
+              name: "Afficher",
+              url: "/afficher",
+              icon: "fa fa-bars"
+            },
+          ]
         },
         {
           name: "Brochures",
           url: "/afficher",
-          icon: "none"
+          icon: "fa fa-print",
+          children: [
+            {
+              name: "Ajouter",
+              url: "/ajouter",
+              icon: "fa fa-plus"
+            },
+            {
+              name: "Afficher",
+              url: "/afficher",
+              icon: "fa fa-bars"
+            },
+          ]
         },
         {
-          name: "COMMUNIQUE DE PRESSE",
+          name: "Communiqué",
           url: "/afficher",
-          icon: "none"
+          icon: "fa fa-print",
+          children: [
+            {
+              name: "Ajouter",
+              url: "/ajouter",
+              icon: "fa fa-plus"
+            },
+            {
+              name: "Afficher",
+              url: "/afficher",
+              icon: "fa fa-bars"
+            },
+          ]
         },
         
       ]
     },
     {
-      name: "GRILLE TARIFAIRE",
+      name: "Grille Tarifaire",
+      icon:"fa fa-money"
     },
     {
       name: "Foyer",
+      icon:"fa fa-university"
     },
     {
-      name: "Vie edtudiante",
+      name: "Vie étudiante",
+      icon:"fa fa-group"
     },
   ]
 };

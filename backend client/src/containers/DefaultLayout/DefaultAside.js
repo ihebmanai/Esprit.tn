@@ -284,7 +284,7 @@ class DefaultAside extends Component {
             <div className="text-uppercase mb-1 mt-4">
               <small><b>CPU Usage</b></small>
             </div>
-            <Progress className="progress-xs" color="info" value="25" />
+            <Progress className="progress-xs" color="danger" value="25" />
             <small className="text-muted">348 Processes. 1/4 Cores.</small>
 
             <div className="text-uppercase mb-1 mt-2">
