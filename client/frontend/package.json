@@ -28,7 +28,6 @@
     "react-scripts": "2.1.8",
     "react-scroll": "^1.7.11",
     "react-scroll-up-button": "^1.6.4",
-    "react-svg": "^10.0.9",
     "react-transition-group": "^2.6.0",
     "react-visibility-sensor": "^5.0.2"
   },
