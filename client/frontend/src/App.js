@@ -21,6 +21,7 @@ import BlogOne from "./pages/BlogOne";
 import BlogTwo from "./pages/BlogTwo";
 import SingleBlog from "./pages/SingleBlog";
 import ScrollUpBtn from "./components/ScrollUp";
+import Events from "./pages/Events";
 
 class App extends Component {
     render() {
@@ -40,6 +41,10 @@ class App extends Component {
                                             <Route
                                                 path="/blog-details"
                                                 component={SingleBlog}
+                                            />
+                                            <Route
+                                                path="/events"
+                                                component={Events}
                                             />
                                             <Route
                                                 path="/blog-two"

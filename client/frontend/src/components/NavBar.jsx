@@ -20,8 +20,6 @@ class NavBar extends Component {
             }
         });
         window.scrollTo(0, 0);
-        
-    
     }
 
     closeNavbar() {
@@ -50,7 +48,7 @@ class NavBar extends Component {
                                 <ul className="list-inline">
                                     <li><a href={this.props.facebookLink} rel="noopener noreferrer" target="_blank"><Icofont icon="icofont-facebook" /></a></li>
                                     <li><a href={this.props.twitterLink} rel="noopener noreferrer" target="_blank"><Icofont icon="icofont-twitter" /></a></li>
-                                    <li><a href={this.props.instagramLink} rel="noopener noreferrer" target="_blank"><Icofont icon="icofont-instagram" /></a></li>
+                                    <li><a href={this.props.youtubeLink} rel="noopener noreferrer" target="_blank"><Icofont icon="icofont-youtube" /></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -69,7 +67,7 @@ class NavBar extends Component {
                     <Navbar.Brand className="navbar-brand logo">
                         <React.Fragment>
                             <LinkContainer exact to="/">
-                                <svg 
+                                <img 
                                     src={this.props.MainLogo}
                                     alt="Logo" 
                                 />
@@ -80,7 +78,7 @@ class NavBar extends Component {
                     <Navbar.Brand className="navbar-brand logo-2"> 
                             <React.Fragment>
                                <LinkContainer exact to="/">
-                                    <svg 
+                                    <img 
                                         className="img-fluid" 
                                         src={this.props.Logo2}
                                         alt="Logo"
@@ -115,7 +113,7 @@ class NavBar extends Component {
                                         className="smooths nav-link"
                                         onClick={this.closeNavbar}
                                     >
-                                        Home
+                                        ESPRIT
                                     </Link>
                                 </Nav.Item>
 
@@ -130,7 +128,7 @@ class NavBar extends Component {
                                         className="nav-link"
                                         onClick={this.closeNavbar}
                                     >
-                                        Services
+                                        ADMISSION
                                     </Link>
                                 </Nav.Item>
 
@@ -145,7 +143,7 @@ class NavBar extends Component {
                                         className="nav-link"
                                         onClick={this.closeNavbar}
                                     >
-                                        Works
+                                        FORMATIONS
                                     </Link>
                                 </Nav.Item>
 
@@ -160,7 +158,7 @@ class NavBar extends Component {
                                         className="nav-link"
                                         onClick={this.closeNavbar}
                                     >
-                                        About
+                                        R.D.I
                                     </Link>
                                 </Nav.Item>
 
@@ -175,7 +173,7 @@ class NavBar extends Component {
                                         className="nav-link"
                                         onClick={this.closeNavbar}
                                     >
-                                        Team
+                                        ENTREPRISES
                                     </Link>
                                 </Nav.Item>
 
@@ -190,7 +188,7 @@ class NavBar extends Component {
                                         className="nav-link"
                                         onClick={this.closeNavbar}
                                     >
-                                        Blog
+                                        INTERNATIONAL
                                     </Link>
                                 </Nav.Item>
 
@@ -205,7 +203,7 @@ class NavBar extends Component {
                                         className="nav-link"
                                         onClick={this.closeNavbar}
                                     >
-                                        Pricing
+                                        VIE ETUDIANTE
                                     </Link>
                                 </Nav.Item>
 
@@ -220,7 +218,7 @@ class NavBar extends Component {
                                         className="nav-link"
                                         onClick={this.closeNavbar}
                                     >
-                                        Contact
+                                        CONTACT
                                     </Link>
                                 </Nav.Item>
                             </React.Fragment>
@@ -232,7 +230,7 @@ class NavBar extends Component {
                                         className="nav-link"
                                         activeClassName=""
                                     >
-                                        Home
+                                        ESPRIT
                                     </NavLink>
                                 </Nav.Item>
 
@@ -242,7 +240,7 @@ class NavBar extends Component {
                                         className="nav-link"
                                         activeClassName=""
                                     >
-                                        Services
+                                        ADMISSION
                                     </NavLink>
                                 </Nav.Item>
 
@@ -252,7 +250,7 @@ class NavBar extends Component {
                                         className="nav-link"
                                         activeClassName=""
                                     >
-                                        Works
+                                        FORMATIONS
                                     </NavLink>
                                 </Nav.Item>
 
@@ -262,7 +260,7 @@ class NavBar extends Component {
                                         className="nav-link"
                                         activeClassName=""
                                     >
-                                        About
+                                        R.D.I
                                     </NavLink>
                                 </Nav.Item>
 
@@ -272,7 +270,7 @@ class NavBar extends Component {
                                         className="nav-link"
                                         activeClassName=""
                                     >
-                                        Team
+                                        ENTREPRISES
                                     </NavLink>
                                 </Nav.Item>
 
@@ -282,7 +280,7 @@ class NavBar extends Component {
                                         className="nav-link"
                                         activeClassName=""
                                     >
-                                        Blog
+                                        INTERNATIONAL
                                     </NavLink>
                                 </Nav.Item>
 
@@ -292,7 +290,7 @@ class NavBar extends Component {
                                         className="nav-link"
                                         activeClassName=""
                                     >
-                                        Pricing
+                                        VIE ETUDIANTE
                                     </NavLink>
                                 </Nav.Item>
 
@@ -302,7 +300,7 @@ class NavBar extends Component {
                                         className="nav-link"
                                         activeClassName=""
                                     >
-                                        Contact
+                                        CONTACT
                                     </NavLink>
                                 </Nav.Item>
                             </React.Fragment>
@@ -327,7 +325,7 @@ NavBar.propTypes = {
     Number: PropTypes.string,
     facebookLink: PropTypes.string,
     twitterLink: PropTypes.string,
-    instagramLink: PropTypes.string,
+    youtubeLink: PropTypes.string,
     linkedinLink: PropTypes.string,
     MainLogo: PropTypes.string,
     Logo2: PropTypes.string,
@@ -335,14 +333,14 @@ NavBar.propTypes = {
 
 //Default Props
 NavBar.defaultProps = {
-    MainLogo: require('../assets/img/logo-esprit.svg'),
-    Logo2: require('../assets/img/logo-esprit.svg'),
+    MainLogo: require('../assets/img/logo.png'),
+    Logo2: require('../assets/img/logo2.png'),
     mailLink: "mailto:name@email.com",
-    mail: "support@roxy.com ",
-    numberLink: "callto:+4917640206387",
-    Number: "+4917640206387",
-    facebookLink: "//facebook.com/envato",
-    twitterLink: "//twitter.com/envato",
-    instagramLink: "//instagram.com/envato/",
+    mail: "contact@esprit.tn",
+    numberLink: "callto:+216 70 685 685",
+    Number: "+216 70 685 685",
+    facebookLink: "https://www.facebook.com/esprit.tn/?fref=ts",
+    twitterLink: "https://twitter.com/Esprit_News?lang=fr",
+    youtubeLink: "https://www.youtube.com/channel/UCJ5wuQ9AQYtpf9Arieu3iXA",
 };
 export default NavBar;

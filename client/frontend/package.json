@@ -5,7 +5,7 @@
   "homepage": "/tf-jsx-demo/rosy/",
   "dependencies": {
     "animate.css": "^3.7.0",
-    "axios": "^0.18.0",
+    "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
     "mdbreact": "^4.11.0",
     "mixitup": "^3.3.1",
@@ -28,6 +28,7 @@
     "react-scripts": "2.1.8",
     "react-scroll": "^1.7.11",
     "react-scroll-up-button": "^1.6.4",
+    "react-svg": "^10.0.9",
     "react-transition-group": "^2.6.0",
     "react-visibility-sensor": "^5.0.2"
   },
