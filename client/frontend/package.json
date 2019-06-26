@@ -5,7 +5,7 @@
   "homepage": "/tf-jsx-demo/rosy/",
   "dependencies": {
     "animate.css": "^3.7.0",
-    "axios": "^0.19.0",
+    "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "mdbreact": "^4.11.0",
     "mixitup": "^3.3.1",
