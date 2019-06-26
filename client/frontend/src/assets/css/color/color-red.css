@@ -24,14 +24,14 @@
 } 
 .navbar-light .navbar-nav > .nav-item:hover,
 .navbar-light .navbar-nav > .nav-item:active {
-	background-color: #e74c14;
+	background-color: #c23616;
 }
 
 .owl-thumb-item i {
     color: #ed1c24;
 }
 .navbar-light .navbar-nav .nav-link.active{
-	background-color: #718093 !important;
+	background-color: #c23616 !important;
 }
 
 .navbar-light.fixed-top, .search-modal, .home-video-area::before, .owl-thumb-item.active, .owl-thumb-item:hover {
