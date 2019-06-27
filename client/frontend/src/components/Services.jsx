@@ -53,44 +53,44 @@ Services.propTypes = {
 
 //Default Props
 Services.defaultProps = {
-    SectionbgTitle: "Services",
-    sectionTitle: "Services",
+    SectionbgTitle: "ESPRIT",
+    sectionTitle: "LES PLUS D'ESPRIT",
     sectionDescription:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac augue at erat hendrerit dictum. Praesent porta, purus eget sagittis imperdiet.",
 
     servicesData: [
         {
-            icon: "icofont-automation",
+            icon: "icofont-education",
             heading: "Creative Solutions",
             description:
                 "We strive to embrace and drive change in our industry which allows us to keep our clients relevant."
         },
         {
-            icon: "icofont-bullseye",
+            icon: "icofont-certificate-alt-2",
             heading: "Excellent Features",
             description:
                 "We strive to embrace and drive change in our industry which allows us to keep our clients relevant."
         },
         {
-            icon: "icofont-woman-in-glasses",
+            icon: "icofont-globe-alt",
             heading: "Friendly Support",
             description:
                 "We strive to embrace and drive change in our industry which allows us to keep our clients relevant."
         },
         {
-            icon: "icofont-chart-growth",
+            icon: "icofont-search-job",
             heading: "SEO & Advertising",
             description:
                 "We strive to embrace and drive change in our industry which allows us to keep our clients relevant."
         },
         {
-            icon: "icofont-network-tower",
+            icon: "icofont-graduate-alt",
             heading: "Marketing & Consulting",
             description:
                 "We strive to embrace and drive change in our industry which allows us to keep our clients relevant."
         },
         {
-            icon: "icofont-laptop-alt",
+            icon: "icofont-rocket-alt-1",
             heading: "Design & Development",
             description:
                 "We strive to embrace and drive change in our industry which allows us to keep our clients relevant."

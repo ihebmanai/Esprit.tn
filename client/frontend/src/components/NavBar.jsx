@@ -49,6 +49,7 @@ class NavBar extends Component {
                                     <li><a href={this.props.facebookLink} rel="noopener noreferrer" target="_blank"><Icofont icon="icofont-facebook" /></a></li>
                                     <li><a href={this.props.twitterLink} rel="noopener noreferrer" target="_blank"><Icofont icon="icofont-twitter" /></a></li>
                                     <li><a href={this.props.youtubeLink} rel="noopener noreferrer" target="_blank"><Icofont icon="icofont-youtube" /></a></li>
+                                    <li><a href={this.props.linkedinLink} rel="noopener noreferrer" target="_blank"><Icofont icon="icofont-linkedin" /></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -333,7 +334,7 @@ NavBar.propTypes = {
 
 //Default Props
 NavBar.defaultProps = {
-    MainLogo: require('../assets/img/logo.png'),
+    MainLogo: require('../assets/img/logo-esprit.png'),
     Logo2: require('../assets/img/logo2.png'),
     mailLink: "mailto:name@email.com",
     mail: "contact@esprit.tn",
@@ -342,5 +343,6 @@ NavBar.defaultProps = {
     facebookLink: "https://www.facebook.com/esprit.tn/?fref=ts",
     twitterLink: "https://twitter.com/Esprit_News?lang=fr",
     youtubeLink: "https://www.youtube.com/channel/UCJ5wuQ9AQYtpf9Arieu3iXA",
+    linkedinLink: "https://www.linkedin.com/company/esprit_2/",
 };
 export default NavBar;

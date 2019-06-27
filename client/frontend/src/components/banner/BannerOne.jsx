@@ -111,48 +111,49 @@ BannerOne.defaultProps = {
     banneronesData: [
         {
             BgClass: "single-slider-item slide-bg-1",
-            TopTitle: "Clean & Creative",
-            Title: "Fully Responsive Design",
+            TopTitle: "Ecole Supérieure Privée d'Ingénierie et de Technologies",
+            Title: "Esprit, se former autrement.",
             Content:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac augue at erat hendrerit dictum. Praesent porta, purus eget sagittis imperdiet.",
+                "Créé en 2003, la School of Engineering accueille désormais prêt de 5000 élèves répartis en 4 spécialités : Informatique, Télécommunication, Génie Civil et Génie électromécanique.",
             BtnLink:  "/#0",
-            BtnName: "get started"
+            BtnName: "A PROPOS "
         },
         {
             BgClass: "single-slider-item slide-bg-2",
-            TopTitle: "Clean & Creative",
-            Title: "Fully Responsive Design",
+            TopTitle: "Pour s'inscrire au concours",
+            Title: "Concours d'admission (2020/2021)",
             Content:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac augue at erat hendrerit dictum. Praesent porta, purus eget sagittis imperdiet.",
+                "Pour avoir plus d'informations ou pour s'inscrire au concours clickez ici",
             BtnLink:  "/#0",
-            BtnName: "get started"
+            BtnName: "Admission"
         },
         {
             BgClass: "single-slider-item slide-bg-3",
-            TopTitle: "Clean & Creative",
-            Title: "Fully Responsive Design",
+            TopTitle: "Nos accréditations",
+            Title: "La reconnaissance et l'accréditation des diplômes depuis 2014",
             Content:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac augue at erat hendrerit dictum. Praesent porta, purus eget sagittis imperdiet.",
+                "EUR-ACE / CDIO / CGE / UniTWIN",
             BtnLink:  "/#0",
-            BtnName: "get started"
+            BtnName: "Accreditations"
         }
     ],
     thumbsData: [
         {
-            ThumbIcon: "icofont-rocket-alt-1",
-            ThumbTitle: "Beautiful Designs",
-            ThumbContent: "We strive to embrace and drive change in our industry which allows us to keep our clients relevant.",
+            ThumbIcon:'icofont-education',
+            ThumbTitle: "ESPRIT",
+            ThumbContent: "Ecole Supérieure Privée d'Ingénierie et de Technologies",
         },
         {
-            ThumbIcon: "icofont-box",
-            ThumbTitle: "Unique Features",
-            ThumbContent: "We strive to embrace and drive change in our industry which allows us to keep our clients relevant.",
+            ThumbIcon:'icofont-certificate-alt-2',
+            ThumbTitle: "Admission",
+            ThumbContent: "Concours d'admission (2020/2021) : Inscriptions ouvertes",
         },
         {
-            ThumbIcon: "icofont-live-support",
-            ThumbTitle: "Reliable Support",
-            ThumbContent: "We strive to embrace and drive change in our industry which allows us to keep our clients relevant.",
+            ThumbIcon:'icofont-globe-alt',
+            ThumbTitle: "Accredidations",
+            ThumbContent: "La reconnaissance et l'accréditation des diplômes depuis 2014",
         },
+        
     ]
 };
 

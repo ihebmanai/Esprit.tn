@@ -24,27 +24,27 @@
 } 
 .navbar-light .navbar-nav > .nav-item:hover,
 .navbar-light .navbar-nav > .nav-item:active {
-	background-color: #c23616;
+	background-color: #ed1c24;
 }
 
 .owl-thumb-item i {
     color: #ed1c24;
 }
 .navbar-light .navbar-nav .nav-link.active{
-	background-color: #c23616 !important;
+	background-color: #ed1c24 !important;
 }
 
 .navbar-light.fixed-top, .search-modal, .home-video-area::before, .owl-thumb-item.active, .owl-thumb-item:hover {
     background-color: #ed1c24;
 }
 .navbar-light.fixed-top {
-    background-color: #dcdde1 !important;
+    background-color: #f5f6fa !important;
 }
 .filter-menu button.programs-filter-btn-active, .filter-menu button:hover {
 	background-color: #ed1c24;
 }
 .work-details .icon li a, .team-box .title, .team-box .icon li a, .team-slides .owl-nav div {
-	color: #fe5619 !important;
+	color: #c23616 !important;
 }
 .team-box .icon li a:hover {
 	background: #ed1c24;
@@ -112,10 +112,10 @@
 	background-color: #ed1c24;
 }
 .single-testimonial-item i, .partners-slides .owl-nav div {
-    color: #fe5619 !important;
+    color: #c23616 !important;
 }
 .client-info h3, .testimonial-slides .owl-nav div {
-	color: #fe5619 !important;
+	color: #c23616 !important;
  }
  .panel-title a:before, .panel-title a.collapsed:before {
 	color: #ed1c24;
@@ -125,7 +125,7 @@
 	background-color: #9e3610;
 }
 .social-icons.bottom ul li a:hover {
-    color: #9e3610;
+    color: #c23616;
 }
 .about-info i {
     color:#ed1c24;

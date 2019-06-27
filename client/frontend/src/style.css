@@ -222,7 +222,7 @@ button {
     Preloader CSS
    ========================= */
 .site-preloader-wrap {
-    background: #fe5619;
+    background: #ed1c24;
     height: 100%;
     position: fixed;
     width: 100%;
@@ -343,7 +343,7 @@ button {
 .navbar-light {
     transition: .6s;
     -webkit-transition: .6s;
-    background-color: #dcdde1 !important;
+    background-color: #f5f6fa !important;
 }
 .navbar-light .navbar-nav .nav-link {
     color: #2f3640;
@@ -380,7 +380,7 @@ button {
     box-shadow: 0 0 10px #ebebeb;
 }
 .menu-shrink .navbar-nav .nav-link {
-    color: #fff !important;
+    color: #2f3640 !important;
 }
 .menu-shrink .navbar-brand.logo-2{
   display: block;
@@ -411,7 +411,7 @@ button {
   padding: 0;
 }
 .menu-shrink .header-search .search-toggle {
-    color: #fff;
+    color: #2f3640;
 }
 .header-search .search-toggle i {
   display: block;
@@ -578,7 +578,8 @@ button {
 .owl-thumb-item {
     display: inline-block;
     border: none;
-    max-width: 360px;
+    width: 360px;
+    height: 200px;
     margin: 0 15px;
     cursor: pointer;
 	background-color: #fdfdfd;
