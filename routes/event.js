@@ -37,6 +37,8 @@ router.post('/add',upload.single('eventImage'),function(req,res){
   m  = new event({
     title : req.body.title,
     date : now,
+    dateDebut : req.body.dateDebut,
+    dateFin : req.body.dateFin,
     desciption : req.body.desciption,
     type:req.body.type,
     url : req.body.url,

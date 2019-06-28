@@ -5,6 +5,8 @@ var eventSchema = mongoose.Schema({
 
     title:String,
     date:Date,
+    dateDebut:Date,
+    dateFin:Date,
     description :{
         type:String,
         required:false

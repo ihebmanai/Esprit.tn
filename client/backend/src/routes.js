@@ -37,6 +37,9 @@ const Users = React.lazy(() => import('./views/Users/Users'));
 const User = React.lazy(() => import('./views/Users/User'));
 const addNews = React.lazy(() => import('./views/News/addNews'));
 const showNews = React.lazy(() => import('./views/News/showNews'));
+const showEvents = React.lazy(() => import('./views/Events/Events'));
+const addEvents = React.lazy(() => import('./views/Events/addEvents'));
+
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
@@ -87,6 +90,9 @@ const routes = [
 
   { path: '/actualite', exact: true, name: 'Actualité', component: showNews },
   { path: '/actualite/ajouter', exact: true, name: 'Ajouter', component: addNews },
+
+  { path: '/events', exact: true, name: 'Events', component: showEvents },
+  { path: '/events/ajouter', exact: true, name: 'Ajouter', component: addEvents },
 ];
 
 export default routes;
