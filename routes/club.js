@@ -57,16 +57,26 @@ console.log(req.file)
 });
 
 
-router.put('/update/:id',function(req,res){
+router.put('/update/:id',upload.single('clubImage'),function(req,res){
 
   var now = new Date()
   let query = {
     "_id" : req.params.id
 }
 console.log('id'+req.params.id)
-club.findByIdAndUpdate(req.params.id, {$set: req.body},
+club.findByIdAndUpdate(req.params.id, {
+  $set:
+ {  
+  title : req.body.title,
+  date : now,
+  type : req.body.type,
+  sport : req.body.sport,
+  desciption : req.body.desciption,
+  url : req.body.url,
+  image : req.file.path,
+}},
   
-  function (err, meetings) {
+function (err, meetings) {
     if (err) return res.send(err)
     res.send('club udpated.');
 });

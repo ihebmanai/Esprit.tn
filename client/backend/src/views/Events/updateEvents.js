@@ -1,97 +1,65 @@
 import React, { Component } from 'react';
-import DatePicker from 'react-date-picker';
 import {Card,CardBody,Input,CardHeader,Col,FormGroup,Label,CardFooter,
     Button,FormText,
   } from 'reactstrap';
-import axios from 'axios';
+  import axios from 'axios';
+  import DatePicker from 'react-date-picker';
 
-
-export default class addEvents extends Component {
-
-    constructor(props){
-        super(props)
-        this.state ={
-            title:'',
+export default class updateEvents extends Component {
+    state = {
+        event : {} , 
+        title:'',
+        date:new Date(),
+        dateDebut: new Date(),
+        dateFin: new Date(),
+        description:'',
+        type:'',
+        image:null,
+        selectedFile: null,
+        url : ''
+      }
+        componentDidMount() {
+        console.log('recuperation du details du meeting'+this.props.match.params.id)
+        axios.get('http://localhost:3000/event/id/'+this.props.match.params.id).then((response)=>{
+           this.setState({
+             event : response.data,
+             title:response.data.title,
             date:new Date(),
             dateDebut: new Date(),
             dateFin: new Date(),
-            description:'',
-            type:'',
-            image:null,
-            selectedFile: null,
-            url : ''
+            description:response.data.description,
+            type:response.data.type,
+            url : response.data.url
+           })
+           console.log(this.state.event)
+          });
         }
-    }
+        handleInputChange = (event) => {
+            event.preventDefault() 
+          //  console.log(event)
+            //console.log(event.target.name)
+            console.log(event.target.value)
+            this.setState({
+              [event.target.name] : event.target.value,
 
-    
-    onChangeDateDebut = date => {
-        this.setState({ 
-            dateDebut:date 
-        })
-        console.log('date debut:'+this.state.dateDebut)
-    }
-    onChangeDateFin = date => {
-        this.setState({ 
-            dateFin:date 
-        })
-        console.log('date fin:'+this.state.dateFin)
-    }
-
-    handleInputChange = (event) => {
-        event.preventDefault() 
-      //  console.log(event)
-        //console.log(event.target.name)
-        console.log(event.target.value)
-        this.setState({
-          [event.target.name] : event.target.value,
-         
-        })
-      }
-
-      onChangeHandler=event=>{
-
-        this.setState({
-            selectedFile: event.target.files[0],
-            loaded: 0,
-          })
-    
-    }
-
-
-    handleSubmit = (event) => {
-        const config = {     
-            headers: { 'content-type': 'multipart/form-data' }
-        }
-        //console.log('submit');
-        const data = new FormData()
-        data.append('eventImage', this.state.selectedFile,this.state.selectedFile.name)
-        data.append('title', this.state.title)
-        data.append('dateDebut', this.state.dateDebut)
-        data.append('dateFin', this.state.dateFin)
-        data.append('description', this.state.description)
-        data.append('type', this.state.type)
-        data.append('url', this.state.url)
-        
-        axios.post('http://localhost:3000/event/add', data,config)
-        .then( (response)=> {
-          console.log(response);
-          if (response.status === 200) {
-            
-            console.log('Ajout event'+this.state.description);
-            this.props.history.push('/events');
+            })
           }
-          
-        
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-      }
-      
-      
+
+          onChangeDateDebut = date => {
+            this.setState({ 
+                dateDebut:date 
+            })
+            console.log('date debut:'+this.state.dateDebut)
+        }
+        onChangeDateFin = date => {
+            this.setState({ 
+                dateFin:date 
+            })
+            console.log('date fin:'+this.state.dateFin)
+        }
     render() {
         return (
-             <Card>
+            <Card>
                         <CardHeader>
                                 <strong> Evénement : </strong> Ajouter
                         </CardHeader>
@@ -104,7 +72,7 @@ export default class addEvents extends Component {
                                     <Col xs="12" md="9">
                                         <Input type="text" 
                                         name="title"
-                                        value = {this.state.title}
+                                        value = {this.state.title || ''}
                                         onChange={this.handleInputChange}  
                                         placeholder="Titre..." 
                                         />
@@ -147,7 +115,7 @@ export default class addEvents extends Component {
                                         <Input 
                                         type="text"
                                         name="description" 
-                                        value = {this.state.description}
+                                        value = {this.state.description || ''}
                                         onChange={this.handleInputChange}
                                         placeholder="Description..."
                                          />
@@ -161,7 +129,7 @@ export default class addEvents extends Component {
                                     <Col xs="12" md="9">
                                         <Input type="select" 
                                         name="type"  
-                                        value = {this.state.type}
+                                        value = {this.state.type || ''}
                                         onChange={this.handleInputChange}
                                         >
                                             <option value="0">veuillez choisir le type</option>
@@ -189,7 +157,7 @@ export default class addEvents extends Component {
                                     <Col xs="12" md="9">
                                         <Input 
                                         name="url"  
-                                        value = {this.state.url}
+                                        value = {this.state.url || ''}
                                         onChange={this.handleInputChange}
                                         type="text" 
                                         placeholder="text..."
@@ -199,15 +167,13 @@ export default class addEvents extends Component {
                                 </FormGroup>
                                 <CardFooter>
                                     <center>
-                                    <Button type="submit" size="sm" onClick={this.handleSubmit}  color="primary"><i className="fa fa-dot-circle-o"></i> Ajouter</Button>
+                                    <Button type="submit" size="sm" onClick={this.handleSubmit}  color="primary"><i className="fa fa-dot-circle-o"></i> Modifier</Button>
                                     <Button type="reset" size="sm" color="danger"><i className="fa fa-ban"></i> Annuler</Button>
                                     </center>
                                 </CardFooter>
                                 
                             </CardBody>
                     </Card>
-              
         )
     }
 }
- 

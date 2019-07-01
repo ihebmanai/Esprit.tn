@@ -54,17 +54,26 @@ router.get('/', function(req, res, next) {
   });
   
   
-  router.put('/update/:id',function(req,res){
+  router.put('/update/:id',upload.single('infraImage'),function(req,res){
   
     var now = new Date()
     let query = {
       "_id" : req.params.id
   }
   console.log('id'+req.params.id)
-  infra.findByIdAndUpdate(req.params.id, {$set: req.body},
+  infra.findByIdAndUpdate(req.params.id, {$set: 
+    
+    {
+      title : req.body.title,
+      date : now,
+      type : req.body.type,
+      desciption : req.body.desciption,
+      image : req.file.path,
+    }
+  },
     function (err, meetings) {
       if (err) return res.send(err)
-      res.send('club udpated.');
+      res.send('infra udpated.');
   });
   })
   
