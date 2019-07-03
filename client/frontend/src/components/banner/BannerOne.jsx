@@ -11,7 +11,7 @@ class BannerOne extends Component {
         const banneronedata = this.props.banneronesData.map(
             (bannerone, index) => (
                 <div className={bannerone.BgClass} key={index}>
-                    <div className="diplay-table">
+                    <div className="diplay-table overlay">
                         <div className="display-table-cell">
                             <VisibilitySensor>
                                 {({ isVisible }) => (
@@ -61,7 +61,7 @@ class BannerOne extends Component {
                             </VisibilitySensor>
                         </div>
                     </div>
-                </div>
+                    </div>
             )
         );
         //BannerOne loop END
@@ -82,7 +82,7 @@ class BannerOne extends Component {
                     <OwlCarousel
                         className="owl-theme homepage-slides"
                         items={1}
-                        touchDrag={false}
+                        touchDrag={true}
                         margin={0}
                         mouseDrag={false}
                         smartSpeed={1000}
@@ -110,7 +110,7 @@ BannerOne.propTypes = {
 BannerOne.defaultProps = {
     banneronesData: [
         {
-            BgClass: "single-slider-item slide-bg-1",
+            BgClass: "single-slider-item slide-bg-1 ",
             TopTitle: "Ecole Supérieure Privée d'Ingénierie et de Technologies",
             Title: "Esprit, se former autrement.",
             Content:
@@ -119,7 +119,7 @@ BannerOne.defaultProps = {
             BtnName: "A PROPOS "
         },
         {
-            BgClass: "single-slider-item slide-bg-2",
+            BgClass: "single-slider-item slide-bg-2 ",
             TopTitle: "Pour s'inscrire au concours",
             Title: "Concours d'admission (2020/2021)",
             Content:
@@ -128,7 +128,7 @@ BannerOne.defaultProps = {
             BtnName: "Admission"
         },
         {
-            BgClass: "single-slider-item slide-bg-3",
+            BgClass: "single-slider-item slide-bg-3 ",
             TopTitle: "Nos accréditations",
             Title: "La reconnaissance et l'accréditation des diplômes depuis 2014",
             Content:

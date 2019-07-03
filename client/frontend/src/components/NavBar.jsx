@@ -111,7 +111,7 @@ class NavBar extends Component {
                                         smooth={true}
                                         offset={-200}
                                         duration={800}
-                                        className="smooths nav-link"
+                                        className=" nav-link"
                                         onClick={this.closeNavbar}
                                     >
                                         ESPRIT
@@ -121,7 +121,7 @@ class NavBar extends Component {
                                 <Nav.Item>
                                     <Link
                                         activeclass="active"
-                                        to="services"
+                                        to="#"
                                         spy={true}
                                         smooth={true}
                                         offset={-200}
@@ -136,7 +136,7 @@ class NavBar extends Component {
                                 <Nav.Item>
                                     <Link
                                         activeclass="active"
-                                        to="works"
+                                        to="#"
                                         spy={true}
                                         smooth={true}
                                         offset={-200}
@@ -151,7 +151,7 @@ class NavBar extends Component {
                                 <Nav.Item>
                                     <Link
                                         activeclass="active"
-                                        to="about"
+                                        to="#"
                                         spy={true}
                                         smooth={true}
                                         offset={-200}
@@ -166,7 +166,7 @@ class NavBar extends Component {
                                 <Nav.Item>
                                     <Link
                                         activeclass="active"
-                                        to="team"
+                                        to="#"
                                         spy={true}
                                         smooth={true}
                                         offset={-200}
@@ -181,7 +181,7 @@ class NavBar extends Component {
                                 <Nav.Item>
                                     <Link
                                         activeclass="active"
-                                        to="blog"
+                                        to="#"
                                         spy={true}
                                         smooth={true}
                                         offset={-200}
@@ -196,7 +196,7 @@ class NavBar extends Component {
                                 <Nav.Item>
                                     <Link
                                         activeclass="active"
-                                        to="pricing"
+                                        to="#"
                                         spy={true}
                                         smooth={true}
                                         offset={-200}
@@ -211,7 +211,7 @@ class NavBar extends Component {
                                 <Nav.Item>
                                     <Link
                                         activeclass="active"
-                                        to="contact"
+                                        to="#"
                                         spy={true}
                                         smooth={true}
                                         offset={-200}

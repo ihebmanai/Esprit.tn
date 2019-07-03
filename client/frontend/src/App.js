@@ -73,8 +73,8 @@ class App extends Component {
                             )}
                         />
                         {/* ScrollUpBtn: src/components/ScrollUp.jsx */}
-                         {/* <Accreditations/>  */}
                         <ScrollUpBtn />
+                         {/* <Accreditations/>  */}
                     </div>
                 </Page>
             </div>

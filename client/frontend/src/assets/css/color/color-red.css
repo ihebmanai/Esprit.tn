@@ -112,20 +112,20 @@
 	background-color: #ed1c24;
 }
 .single-testimonial-item i, .partners-slides .owl-nav div {
-    color: #c23616 !important;
+    color: #848484 !important;
 }
 .client-info h3, .testimonial-slides .owl-nav div {
-	color: #c23616 !important;
+	color: #848484 !important;
  }
  .panel-title a:before, .panel-title a.collapsed:before {
 	color: #ed1c24;
 	border: 1px solid #ed1c24;
 }
 .social-icons.bottom ul li a {
-	background-color: #9e3610;
+	background-color: #848484;
 }
 .social-icons.bottom ul li a:hover {
-    color: #c23616;
+    color: #ed1c24;
 }
 .about-info i {
     color:#ed1c24;

@@ -482,6 +482,7 @@ button {
 .slide-bg-3 {
     background-image: url(assets/img/slide-bg-3.jpg);
 }
+
 .hompage-slides-wrapper {
 	position: relative;
 }
@@ -493,6 +494,19 @@ button {
   font-size: 15px;
   color: #fff;
 }
+
+/* OVERLAY BANNER */
+.overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+
 .single-slider-item .center-wrap {
     margin-top: 40px;
     float: left;
@@ -1952,7 +1966,7 @@ a.button.border {
 	margin: 0 0 10px;
 }
 .address-area i {
-    color: #fe5619;
+    color: #ed1c24;
     font-size: 35px;
     position: absolute;
     left: 0;
@@ -2488,3 +2502,7 @@ h3,h2{
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
   }
+
+
+
+
