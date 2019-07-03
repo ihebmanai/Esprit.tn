@@ -37,7 +37,9 @@ router.post('/add',upload.single('eventImage'),function(req,res){
   m  = new event({
     title : req.body.title,
     date : now,
-    desciption : req.body.desciption,
+    dateDebut : req.body.dateDebut,
+    dateFin : req.body.dateFin,
+    description : req.body.description,
     type:req.body.type,
     url : req.body.url,
     image : req.file.path,
@@ -54,20 +56,31 @@ router.post('/add',upload.single('eventImage'),function(req,res){
  //console.log("reponses contenu"+ req.body.reponses)
 });
 
-router.put('/update/:id',function(req,res){
+router.put('/update/:id',upload.single('eventImage'),function(req,res){
 
   var now = new Date()
   let query = {
     "_id" : req.params.id
 }
 console.log('id'+req.params.id)
-event.findByIdAndUpdate(req.params.id, {$set: req.body},
+event.findByIdAndUpdate(req.params.id, {
+  $set:
+ {  title : req.body.title,
+  date : now,
+  dateDebut : req.body.dateDebut,
+  dateFin : req.body.dateFin,
+  description : req.body.description,
+  type:req.body.type,
+  url : req.body.url,
+  image : req.file.path,
+  user:req.body.user
+}
+},
   
-  function (err, meetings) {
+function (err, meetings) {
     if (err) return res.send(err)
     res.send('event udpated.');
 });
-
 })
 
 

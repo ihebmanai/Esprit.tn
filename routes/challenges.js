@@ -57,14 +57,22 @@ router.post('/add',upload.single('chalImage'),function(req,res){
 });
 
 
-router.put('/update/:id',function(req,res){
+router.put('/update/:id',upload.single('chalImage'),function(req,res){
 
   var now = new Date()
   let query = {
     "_id" : req.params.id
 }
 console.log('id'+req.params.id)
-challenges.findByIdAndUpdate(req.params.id, {$set: req.body},
+challenges.findByIdAndUpdate(req.params.id, {$set: 
+  {
+    title : req.body.title,
+    date : now,
+    desciption : req.body.desciption,
+    url : req.body.url,
+    image : req.file.path,
+  }
+},
   
   function (err, meetings) {
     if (err) return res.send(err)

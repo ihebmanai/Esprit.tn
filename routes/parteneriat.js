@@ -57,14 +57,23 @@ router.post('/add',upload.single('partImage'),function(req,res){
 });
 
 // update part ne marche pas 
-router.put('/update/:id',function(req,res){
+router.put('/update/:id',upload.single('partImage'),function(req,res){
 
   var now = new Date()
   let query = {
     "_id" : req.params.id
 }
 console.log('id'+req.params.id)
-part.findByIdAndUpdate(req.params.id, {$set: req.body},
+part.findByIdAndUpdate(req.params.id, {$set: 
+  {
+    title : req.body.title,
+    date : now,
+    desciption : req.body.desciption,
+    url : req.body.url,
+    type:req.body.type,
+    image : req.file.path,
+  }
+},
   
   function (err, meetings) {
     if (err) return res.send(err)
