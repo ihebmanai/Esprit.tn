@@ -52,7 +52,7 @@ export default class detailsEvent extends Component {
                 </div>
               </CardHeader>
               <CardBody>
-                <img  src={`http://localhost:5000/${this.state.event.image}`} height='300px' width='480px' alt='image' />
+                <img  src={`http://localhost:5000/${this.state.event.image}`} height='300px' width='480px' alt='' />
               </CardBody>
             </Card>
           </Col>

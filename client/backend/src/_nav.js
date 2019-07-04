@@ -53,12 +53,12 @@ export default {
       children: [
         {
           name: "Ajouter",
-          url: "/ajouter",
+          url: "/events/add",
           icon: "fa fa-plus"
         },
         {
           name: "Afficher",
-          url: "/afficher",
+          url: "/events/show",
           icon: "fa fa-bars"
         },
       ]
