@@ -20,7 +20,7 @@ export default class updateEvents extends Component {
       }
         componentDidMount() {
         console.log('recuperation du details du meeting'+this.props.match.params.id)
-        axios.get('http://localhost:3000/event/id/'+this.props.match.params.id).then((response)=>{
+        axios.get('http://localhost:5000/event/id/'+this.props.match.params.id).then((response)=>{
            this.setState({
              event : response.data,
              title:response.data.title,

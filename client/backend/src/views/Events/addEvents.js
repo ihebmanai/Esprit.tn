@@ -72,7 +72,7 @@ export default class addEvents extends Component {
         data.append('type', this.state.type)
         data.append('url', this.state.url)
         
-        axios.post('http://localhost:3000/event/add', data,config)
+        axios.post('http://localhost:5000/event/add', data,config)
         .then( (response)=> {
           console.log(response);
           if (response.status === 200) {

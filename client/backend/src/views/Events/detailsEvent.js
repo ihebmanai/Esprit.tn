@@ -21,7 +21,7 @@ export default class detailsEvent extends Component {
 
       componentDidMount() {
         console.log('recuperation du details du Evenement'+this.props.match.params.id)
-        axios.get('http://localhost:3000/event/id/'+this.props.match.params.id).then((response)=>{
+        axios.get('http://localhost:5000/event/id/'+this.props.match.params.id).then((response)=>{
            this.setState({
              event : response.data
            })
@@ -52,7 +52,7 @@ export default class detailsEvent extends Component {
                 </div>
               </CardHeader>
               <CardBody>
-                <img  src={`http://localhost:3000/${this.state.event.image}`} height='300px' width='480px' alt='image' />
+                <img  src={`http://localhost:5000/${this.state.event.image}`} height='300px' width='480px' alt='image' />
               </CardBody>
             </Card>
           </Col>
