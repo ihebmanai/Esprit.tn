@@ -37,9 +37,8 @@ mongo.on('open', ()=>{
 
 });
 
-mongo.on('eroor', (err)=>{
+mongo.on('error', (err)=>{
     console.log(err);
-
 });
 
 

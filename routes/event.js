@@ -42,7 +42,7 @@ router.post('/add',upload.single('eventImage'),function(req,res){
     description : req.body.description,
     type:req.body.type,
     url : req.body.url,
-    image : req.file.path,
+    // image : req.file.path,
     user:req.body.user
    
  });
