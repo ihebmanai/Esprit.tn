@@ -20,11 +20,10 @@ router.get('/', passport.authenticate('jwt', { session: false }),(req, res) => {
 // @desc    Register user
 // @access  Public
 router.post('/register', (req, res) => {
-
   const { username, password, email} = req.body;
-  UserModel.findOne({ username }).then(user => {
+  UserModel.findOne({ email }).then(user => {
     if (user) {
-      return res.status(400).json('username exists');
+      return res.status(400).json('Email already exists !');
     }
     const avatar = gravatar.url(email, {s: '100', r: 'x', d: 'retro'}, false);
     const newUser = new UserModel({
@@ -38,11 +37,15 @@ router.post('/register', (req, res) => {
       bcrypt.hash(newUser.password, salt, (err, hash) => {
         if (err) throw err;
         newUser.password = hash;
-        console.log(newUser);
         newUser
-          .save()
-          .then(user => res.json(user))
-          .catch(err => console.log(err));
+          .save((err) => {
+            if (err)  {
+              res.status(400).json('Register has failed')
+            }
+            else
+             return res.status(200).json('User is succsessfully added');
+          })
+
       });
     });
   });
@@ -57,13 +60,13 @@ router.post('/login', (req, res) => {
   UserModel.findOne({ username }).then(user => {
     // Check for user
     if (!user) {
-      return res.status(404).json('user not found');
+      return res.status(400).json('user not found');
     }
     // Check Password
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
-        const { id, username, email, avatar, createdAt, smartHubId, walletAddress } = user;
-        const payload = { id, username, email, avatar, createdAt, smartHubId, walletAddress }; // Create JWT Payload
+        const { id, username, email, avatar } = user;
+        const payload = { id, username, email, avatar };
         // Sign Token
         jwt.sign(payload, process.env.TOKEN_KEY, { expiresIn: "20 days" }, (err, token) => {
          return res.json({

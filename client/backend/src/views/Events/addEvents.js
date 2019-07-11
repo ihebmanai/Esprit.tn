@@ -3,18 +3,17 @@ import DatePicker from 'react-date-picker';
 import {Card,CardBody,Input,CardHeader,Col,FormGroup,Label,CardFooter,
     Button,FormText,
   } from 'reactstrap';
-import axios from 'axios';
+import { addEvent } from "../../actions/eventActions";
+import { connect } from "react-redux";
 
-
-export default class addEvents extends Component {
+class addEvents extends Component {
 
     constructor(props){
         super(props)
         this.state ={
             title:'',
-            date:new Date(),
-            dateDebut: new Date(),
-            dateFin: new Date(),
+            dateStart: new Date(),
+            dateEnd: new Date(),
             description:'',
             type:'',
             image:null,
@@ -23,32 +22,38 @@ export default class addEvents extends Component {
         }
     }
 
+
+    handlerCancel = e => {
+        this.setState({
+            title:'',
+            dateStart: new Date(),
+            dateEnd: new Date(),
+            description:'',
+            type:'',
+            image:null,
+            selectedFile: null,
+            url : ''
+        });
+      };
     
     onChangeDateDebut = date => {
         this.setState({ 
-            dateDebut:date 
+            dateStart:date 
         })
-        console.log('date debut:'+this.state.dateDebut)
     }
     onChangeDateFin = date => {
         this.setState({ 
-            dateFin:date 
+            dateEnd:date 
         })
-        console.log('date fin:'+this.state.dateFin)
     }
 
     handleInputChange = (event) => {
-        event.preventDefault() 
-      //  console.log(event)
-        //console.log(event.target.name)
-        console.log(event.target.value)
         this.setState({
           [event.target.name] : event.target.value,
-         
         })
       }
 
-      onChangeHandler=event=>{
+      fileSelectedHandler= event => {
 
         this.setState({
             selectedFile: event.target.files[0],
@@ -59,33 +64,21 @@ export default class addEvents extends Component {
 
 
     handleSubmit = (event) => {
-        const config = {     
-            headers: { 'content-type': 'multipart/form-data' }
-        }
-        //console.log('submit');
-        const data = new FormData()
-        data.append('eventImage', this.state.selectedFile,this.state.selectedFile.name)
-        data.append('title', this.state.title)
-        data.append('dateDebut', this.state.dateDebut)
-        data.append('dateFin', this.state.dateFin)
-        data.append('description', this.state.description)
-        data.append('type', this.state.type)
-        data.append('url', this.state.url)
+    
+        const newEvent = new FormData()
+        newEvent.append('eventImage', this.state.selectedFile,this.state.selectedFile.name)
+        newEvent.append('title', this.state.title)
+        newEvent.append('dateStart', this.state.dateStart)
+        newEvent.append('dateEnd', this.state.dateEnd)
+        newEvent.append('description', this.state.description)
+        newEvent.append('type', this.state.type)
+        newEvent.append('url', this.state.url)
+        newEvent.append('user', this.props.user.id)
         
-        axios.post('http://localhost:5000/event/add', data,config)
-        .then( (response)=> {
-          console.log(response);
-          if (response.status === 200) {
-            
-            console.log('Ajout event'+this.state.description);
-            this.props.history.push('/events');
-          }
-          
-        
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+        console.log('newEvent front', newEvent.get('user'));
+        this.props.addEvent(newEvent);
+        //this.props.history.push("/events");
+
       }
       
       
@@ -117,10 +110,9 @@ export default class addEvents extends Component {
                                     </Col>
                                     <Col xs="12" md="9">
                                         <DatePicker type="date" 
-                                        name="dateDebut"
+                                        name="dateStart"
                                         onChange={this.onChangeDateDebut}
-                                        value={this.state.dateDebut}
-                                        minDate={this.state.dateFin}
+                                        value={this.state.dateStart}
                                         placeholder="date Debut" 
                                         />
                                     </Col>
@@ -132,8 +124,8 @@ export default class addEvents extends Component {
                                     <Col xs="12" md="9">
                                         <DatePicker 
                                         type="date"
-                                        name="dateFin" 
-                                        value = {this.state.dateFin}
+                                        name="dateEnd" 
+                                        value = {this.state.dateEnd}
                                         onChange={this.onChangeDateFin}
                                         placeholder="date Fin" 
                                          />
@@ -178,7 +170,7 @@ export default class addEvents extends Component {
                                         <Input 
                                         type="file" 
                                         name="type"  
-                                        onChange={this.onChangeHandler}
+                                        onChange={this.fileSelectedHandler}
                                          />
                                     </Col>
                                 </FormGroup>
@@ -200,7 +192,7 @@ export default class addEvents extends Component {
                                 <CardFooter>
                                     <center>
                                     <Button type="submit" size="sm" onClick={this.handleSubmit}  color="primary"><i className="fa fa-dot-circle-o"></i> Ajouter</Button>
-                                    <Button type="reset" size="sm" color="danger"><i className="fa fa-ban"></i> Annuler</Button>
+                                    <Button type="reset" size="sm" onClick={this.handlerCancel} color="danger"><i className="fa fa-ban"></i> Annuler</Button>
                                     </center>
                                 </CardFooter>
                                 
@@ -211,3 +203,13 @@ export default class addEvents extends Component {
     }
 }
  
+const mapStateToProps = state => ({
+    user: state.auth.user,
+    errors: state.errors,
+    event: state.event,
+  });
+  
+  export default connect(
+    mapStateToProps,
+    { addEvent }
+  )(addEvents);

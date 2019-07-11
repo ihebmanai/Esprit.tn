@@ -1,9 +1,9 @@
 const router = require('express').Router();
 
 const indexRouter = require('./index');
-const userRoutes = require('./users.route'); 
+const userRoutes = require('./user.route'); 
 const clubRouter = require('./club');
-const eventRouter = require('./event');
+const eventRouter = require('./event.route');
 const challengesRouter = require('./challenges');
 const unityRouter = require('./unity');
 const partRouter = require('./parteneriat');
@@ -25,7 +25,7 @@ router.use("/user", userRoutes);
 // router.use('/', indexRouter);
 //router.use('/users', usersRouter);
 router.use('/club', clubRouter);
-router.use('/event', eventRouter);
+router.use('/events', eventRouter);
 router.use('/challenges', challengesRouter);
 router.use('/unity', unityRouter);
 router.use('/part', partRouter);

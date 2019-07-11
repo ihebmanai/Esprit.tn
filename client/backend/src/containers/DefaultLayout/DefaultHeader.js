@@ -36,7 +36,6 @@ class DefaultHeader extends Component {
     this.props.history.push("/login");
   };
 
-
   render() {
     const {user} = this.props;
 
@@ -67,8 +66,9 @@ class DefaultHeader extends Component {
                 <strong>Account Settings</strong>
               </DropdownItem>
               <DropdownItem onClick={this.handleProfil}>
-                <i className="fa fa-user" /> 
+               <Link to={`/users/${this.props.user.id}`} style={{textDecoration: 'none'}} > <i className="fa fa-user" /> 
                 Profile
+                </Link>
               </DropdownItem>
               <DropdownItem>
                 <i className="fa fa-wrench" /> Settings

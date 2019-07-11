@@ -9,8 +9,14 @@
     "type": "git",
     "url": "https://github.com/IdrissMahjoubi/Esprit.tn"
   },
+  "proxy": "http://localhost:4000",
   "scripts": {
-    "server": "nodemon server.js"
+    "client-back": "cd client/backend && npm start",
+    "client-front": "cd client/frontend && yarn start",
+    "server": "nodemon server.js",
+    "start-back": "concurrently \"npm run server\" \"npm run client-back\"",
+    "start-front": "concurrently \"npm run server\" \"npm run client-front\"",
+    "start": "concurrently \"npm run server\" \"npm run client-back\" \"npm run client-front\""
   },
   "dependencies": {
     "@types/node": "^11.11.4",
@@ -40,17 +46,7 @@
     "validator": "^10.11.0"
   },
   "devDependencies": {
-    "eslint": "^5.15.3",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-prettier": "^4.1.0",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-node": "^8.0.1",
-    "eslint-plugin-prettier": "^3.0.1",
-    "eslint-plugin-promise": "^4.0.1",
-    "eslint-plugin-react": "^7.12.4",
-    "eslint-plugin-standard": "^4.0.0",
+    "concurrently": "^4.1.1",
     "prettier": "^1.16.4"
   }
 }
