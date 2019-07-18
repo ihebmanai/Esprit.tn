@@ -13,23 +13,23 @@ import {
   Row,
   CardImg
 } from 'reactstrap';
-import DatePicker from 'react-date-picker';
 import { getEvent, editEvent } from '../../actions/eventActions';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import moment from 'moment';
 
 class updateEvents extends Component {
   state = {
     title: '',
-    date: new Date(),
-    dateStart: new Date(),
-    dateEnd: new Date(),
+    dateStart: '',
+    dateEnd:'',
     description: '',
-    type: 'empty',
+    type: '',
     imageData: null,
     url: '',
     selectedFile: null,
-    loaded:false
+    loaded: false,
+    imagePreviewUrl :''
   };
 
   componentDidMount() {
@@ -53,23 +53,32 @@ class updateEvents extends Component {
     });
   };
 
-  onChangeDateStart = date => {
-    this.setState({
-      dateStart: date
-    });
-  };
-  onChangeDateEnd = date => {
-    this.setState({
-      dateEnd: date
-    });
-  };
+  // onChangeDateStart = date => {
+  //   this.setState({
+  //     dateStart: date
+  //   });
+  // };
+  // onChangeDateEnd = date => {
+  //   this.setState({
+  //     dateEnd: date
+  //   });
+  // };
 
   fileSelectedHandler = event => {
-    this.setState({
-      selectedFile: event.target.files[0],
-      loaded: true
-    });
+    event.preventDefault(); 
+    let reader = new FileReader();
+    let selectedFile = event.target.files[0];
+
+    reader.onloadend = () => {
+      this.setState({
+        selectedFile,
+        imagePreviewUrl: reader.result,
+        loaded: true
+      });
+    }
+    reader.readAsDataURL(selectedFile);
   };
+
 
   handleSubmit = (event) => {
     const newEvent = new FormData();
@@ -101,7 +110,7 @@ class updateEvents extends Component {
                 <strong>Evénement : Image</strong>
               </CardHeader>
               <CardBody>
-                <CardImg src={`http://localhost:4000/${event.image}`} alt={event.image} />
+                <CardImg src={this.state.imagePreviewUrl ? this.state.imagePreviewUrl : `http://localhost:4000/${event.image}` } alt={event.image} />
               </CardBody>
             </Card>
           </Col>
@@ -128,29 +137,38 @@ class updateEvents extends Component {
                   </Col>
                 </FormGroup>
                 <FormGroup row>
-                  <Col md="3">
-                    <Label htmlFor="date-input">Date Debut : </Label>
-                  </Col>
-                  <Col xs="12" md="9">
-                    <DatePicker
-                      name="dateStart"
-                      onChange={this.onChangeDateStart}
-                      value={this.state.dateStart}
-                    />
-                  </Col>
+                <Col md="3">
+                  <Label htmlFor="date-input">Date Start </Label>
+                </Col>
+                <Col xs="12" md="9">
+                  <Input
+                    onChange={this.handleInputChange}
+                    value={moment(this.state.dateStart).format('YYYY-MM-DD')}
+                    type="date"
+                    id="date-input"
+                    name="dateStart"
+                    placeholder="date debut"
+                  />
+                </Col>
                 </FormGroup>
                 <FormGroup row>
-                  <Col md="3">
-                    <Label htmlFor="date-input">Date Fin : </Label>
-                  </Col>
-                  <Col xs="12" md="9">
-                    <DatePicker
-                      name="dateEnd"
-                      value={this.state.dateEnd}
-                      onChange={this.onChangeDateEnd}
-                    />
-                  </Col>
+
+
+                <Col md="3">
+                  <Label htmlFor="date-input">Date End </Label>
+                </Col>
+                <Col xs="12" md="9">
+                  <Input
+                    onChange={this.handleInputChange}
+                    value={moment(this.state.dateEnd).format('YYYY-MM-DD')}
+                    type="date"
+                    id="date-input"
+                    name="dateEnd"
+                    placeholder="date fin"
+                  />
+                </Col>
                 </FormGroup>
+
                 <FormGroup row>
                   <Col md="3">
                     <Label htmlFor="textarea-input">description</Label>
@@ -190,7 +208,7 @@ class updateEvents extends Component {
                     <Label htmlFor="text-input">Image :</Label>
                   </Col>
                   <Col xs="12" md="9">
-                    <Input type="file" name="type" onChange={this.fileSelectedHandler} />
+                    <Input type="file" name="image" onChange={this.fileSelectedHandler} />
                   </Col>
                 </FormGroup>
                 <FormGroup row>
