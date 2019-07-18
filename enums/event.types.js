@@ -1,5 +1,5 @@
 eventTypes = [
-    'Sportif',
+    'sportif',
     'autres',
 ]
 

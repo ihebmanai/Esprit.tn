@@ -7,7 +7,9 @@ import {
   EVENT_LOADING,
   CLEAR_ERRORS,
   GET_ERRORS,
-  // SEARCH_EVENT,
+  EDIT_EVENT,
+  UNARCHIVE_EVENT,
+  ARCHIVE_EVENT
 } from "../actions/types";
 
 export const addEvent = (eventData) => dispatch => {
@@ -32,11 +34,78 @@ export const addEvent = (eventData) => dispatch => {
     })
 };
 
+export const editEvent = (eventData,id) => dispatch => {
+  dispatch(clearErrors());
+  axios.put(`/events/update/${id}`, eventData)
+    .then(res =>
+      dispatch({
+        type: EDIT_EVENT,
+        payload: res.data
+      })
+    )
+    .catch(error => {
+      if (error.response && error.response.data) {
+        dispatch({
+          type: GET_ERRORS,
+          payload: {
+            message: error.response.data,
+            visible: true
+          }
+        })
+      }
+    })
+};
+
+export const archiveEvent = (id) => dispatch => {
+  dispatch(clearErrors());
+  axios.put(`/events/archive/${id}`)
+    .then(res =>
+      dispatch({
+        type: ARCHIVE_EVENT,
+        payload: res.data
+      })
+    )
+    .catch(error => {
+      if (error.response && error.response.data) {
+        dispatch({
+          type: GET_ERRORS,
+          payload: {
+            message: error.response.data,
+            visible: true
+          }
+        })
+      }
+    })
+};
+
+export const unarchiveEvent = (id) => dispatch => {
+  dispatch(clearErrors());
+  axios.put(`/events/unarchive/${id}`)
+    .then(res =>
+      dispatch({
+        type: UNARCHIVE_EVENT,
+        payload: res.data
+      })
+    )
+    .catch(error => {
+      if (error.response && error.response.data) {
+        dispatch({
+          type: GET_ERRORS,
+          payload: {
+            message: error.response.data,
+            visible: true
+          }
+        })
+      }
+    })
+};
+
+
 
 export const getEvents = () => dispatch => {
   dispatch(setEventLoading());
   axios
-    .get("/events?isArchived=")
+    .get("/events/")
     .then(res => {
       dispatch({
         type: GET_EVENTS,
@@ -66,13 +135,23 @@ export const getEvent = id => dispatch => {
         payload: res.data
       })
     )
-    .catch(err => console.log(err));
+    .catch(error => {
+      if (error.response && error.response.data) {
+        dispatch({
+          type: GET_ERRORS,
+          payload: {
+            message: error.response.data,
+            visible: true
+          }
+        })
+      }
+    })
 };
 
 export const deleteEvent = id => dispatch => {
   dispatch(clearErrors());
   axios
-    .delete(`/events/${id}`)
+    .delete(`/events/delete/${id}`)
     .then(res =>
       dispatch({
         type: DELETE_EVENT,
