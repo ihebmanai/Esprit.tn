@@ -61,7 +61,7 @@ router.post('/add',upload.single('pressImage'),(req,res)=>
  
   m  = new pressModel({
     title : req.body.title,
-    desciption : req.body.desciption,
+    description : req.body.description,
     url : req.body.url,
     type:req.body.type,
     image : req.file.path,
@@ -78,31 +78,50 @@ router.post('/add',upload.single('pressImage'),(req,res)=>
  //console.log("reponses contenu"+ req.body.reponses)
 });
 
-router.put('/update/:id',upload.single('pressImage'),function(req,res){
+/* UPDATE Single Event. 
+@Route : events/update/:id
+*/
+router.put(
+  '/update/:id',
+  upload.single('pressImage'),
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    const query = {
+      _id: req.params.id
+    };
 
-  var now = new Date()
-  let query = {
-    "_id" : req.params.id
-}
-console.log('id'+req.params.id)
-press.findByIdAndUpdate(req.params.id, {$set: 
-  {
-    title : req.body.title,
-    date : now,
-    desciption : req.body.desciption,
-    url : req.body.url,
-    type:req.body.type,
-    image : req.file.path,
-    user:req.body.user
+    let eventUpdated;
+    if (req.file) {
+      eventUpdated = {
+        title: req.body.title,
+        description: req.body.description,
+        type: req.body.type,
+        url: req.body.url,
+        image: req.file.path,
+        user: req.body.user
+      };
+    } else {
+      eventUpdated = {
+        title: req.body.title,
+        description: req.body.description,
+        type: req.body.type,
+        url: req.body.url,
+        user: req.body.user
+      };
+    }
+
+    pressModel
+      .findOneAndUpdate(
+        query,
+        {
+          $set: eventUpdated
+        },
+        { new: true }
+      )
+      .then(event => res.json(event))
+      .catch(err => res.status(400).json(err));
   }
-},
-  
-  function (err, meetings) {
-    if (err) return res.send(err)
-    res.send('press udpated.');
-});
-
-})
+);
 
 
 router.delete('/delete/:id', function(req, res, next) {

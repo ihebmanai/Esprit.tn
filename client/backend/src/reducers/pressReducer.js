@@ -5,7 +5,7 @@ import {
     DELETE_PRESS,
     PRESS_LOADING,
     SEARCH_PRESS,
-    UPDATE_PRESS
+    EDIT_PRESS
   } from "../actions/types";
   
   const initialState = {
@@ -40,7 +40,7 @@ import {
           ...state,
           press: action.payload
         };
-      case UPDATE_PRESS:
+      case EDIT_PRESS:
           return {
             ...state,
             press: action.payload

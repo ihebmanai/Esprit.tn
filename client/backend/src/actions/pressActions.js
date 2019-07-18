@@ -7,7 +7,7 @@ import {
   PRESS_LOADING,
   CLEAR_ERRORS,
   GET_ERRORS,
-  UPDATE_PRESS
+  EDIT_PRESS
   // SEARCH_EVENT,
 } from "../actions/types";
 
@@ -82,6 +82,28 @@ export const deletePress = id => dispatch => {
       dispatch({
         type: DELETE_PRESS,
         payload: id
+      })
+    )
+    .catch(error => {
+      if (error.response && error.response.data) {
+        dispatch({
+          type: GET_ERRORS,
+          payload: {
+            message: error.response.data,
+            visible: true
+          }
+        })
+      }
+    })
+};
+
+export const editPress = (eventData,id) => dispatch => {
+  dispatch(clearErrors());
+  axios.put(`/press/update/${id}`, eventData)
+    .then(res =>
+      dispatch({
+        type: EDIT_PRESS,
+        payload: res.data
       })
     )
     .catch(error => {

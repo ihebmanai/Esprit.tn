@@ -29,7 +29,7 @@ import { connect } from "react-redux";
         newArticle.append('url', this.state.url)
         newArticle.append('user', this.props.user.id)
         
-        console.log('new Press Article front', newArticle.get('user'));
+        console.log('new Press Article front', newArticle.get('description'));
         this.props.addPress(newArticle);
         //this.props.history.push("/events");
 
@@ -75,7 +75,7 @@ import { connect } from "react-redux";
                                     <Col xs="12" md="9">
                                         <Input type="text" 
                                         name="title"
-                                        value = {this.state.title}
+                                        value = {this.state.title ||''}
                                         onChange={this.handleInputChange}  
                                         placeholder="Titre..." 
                                         />
@@ -92,7 +92,7 @@ import { connect } from "react-redux";
                                         <Input 
                                         type="text"
                                         name="description" 
-                                        value = {this.state.description}
+                                        value = {this.state.description ||''}
                                         onChange={this.handleInputChange}
                                         placeholder="Description..."
                                          />
@@ -106,7 +106,7 @@ import { connect } from "react-redux";
                                     <Col xs="12" md="9">
                                         <Input type="select" 
                                         name="type"  
-                                        value = {this.state.type}
+                                        value = {this.state.type || ''}
                                         onChange={this.handleInputChange}
                                         >
                                             <option value="0">veuillez choisir le type</option>
@@ -136,7 +136,7 @@ import { connect } from "react-redux";
                                     <Col xs="12" md="9">
                                         <Input 
                                         name="url"  
-                                        value = {this.state.url}
+                                        value = {this.state.url || ''}
                                         onChange={this.handleInputChange}
                                         type="text" 
                                         placeholder="url..."
