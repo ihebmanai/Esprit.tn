@@ -21,9 +21,6 @@ router.get('/', (req, res) => {
 });
 
 router.use("/user", userRoutes);
-
-// router.use('/', indexRouter);
-//router.use('/users', usersRouter);
 router.use('/club', clubRouter);
 router.use('/events', eventRouter);
 router.use('/challenges', challengesRouter);

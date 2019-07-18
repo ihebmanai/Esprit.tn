@@ -18,7 +18,7 @@ import {
 } from 'reactstrap';
 import 'toasted-notes/src/styles.css';
 
-class Events extends Component {
+class archivedEvents extends Component {
   state = {
     events: [],
     search: '',
@@ -29,12 +29,10 @@ class Events extends Component {
     this.props.getEvents();
   }
 
-  handleArchivedEventsButton = () => {
-    this.props.history.push('/events/archived');
+  handleUnarchivedEventsButton = () => {
+    this.props.history.push('/events/');
   };
-  handleAddRedirect = () => {
-    this.props.history.push('/events/add');
-  };
+
 
   handleInputChange = event => {
     this.setState({
@@ -46,8 +44,8 @@ class Events extends Component {
     const { events } = this.props.event;
 
     let allEvents = events.filter(event => {
-      return event.archived === false;
-    });;
+      return event.archived === true;
+    });
 
     if (this.state.search !== '') {
       allEvents = allEvents.filter(event => {
@@ -109,17 +107,9 @@ class Events extends Component {
                     <FormGroup row >
                     <Col md="4" sm="4">
                       <InputGroup className="mt-2">
-                        <Button block onClick={this.handleAddRedirect} color="success" outline>
+                        <Button onClick={this.handleUnarchivedEventsButton} block color="danger" outline>
                           <i className="fa fa-plus" />
-                          &nbsp;Ajouter un Evenement
-                        </Button>
-                      </InputGroup>
-                    </Col>
-                    <Col md="4" sm="4">
-                      <InputGroup className="mt-2">
-                        <Button onClick={this.handleArchivedEventsButton} block color="danger" outline>
-                          <i className="fa fa-plus" />
-                          &nbsp;Evenements Archiveés
+                          &nbsp;Evenements Non Archiveés
                         </Button>
                       </InputGroup>
                     </Col>
@@ -151,4 +141,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { getEvents }
-)(Events);
+)(archivedEvents);

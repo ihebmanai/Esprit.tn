@@ -1,15 +1,13 @@
 const mongoose = require('mongoose');
 const eventTypes = require('../enums/event.types');
-
 const Schema = mongoose.Schema;
-
 const eventSchema = mongoose.Schema(
   {
     title: String,
     dateStart: Date,
     dateEnd: Date,
     description: String,
-    archive: {
+    archived: {
       type: Boolean,
       required: false
     },
@@ -18,7 +16,10 @@ const eventSchema = mongoose.Schema(
       enum: eventTypes
     },
     url: String,
-    image: String,
+    image: {
+      type: String,
+      required: false
+    },
     user: { type: Schema.Types.ObjectId, ref: 'users' }
   },
   {

@@ -1,67 +1,68 @@
 const router = require('express').Router();
 const eventModel = require('../models/event.model');
 const passport = require('passport');
-const multer = require('multer');
+const upload = require('../utils/Uploader');
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, './uploads');
-  },
-  filename(req, file, cb) {
-    cb(null, new Date().toISOString().replace(/:/g, '-') + file.originalname);
-  }
-});
+// const multer = require('multer');
 
-const upload = multer({ storage });
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, './uploads');
+//   },
+//   filename(req, file, cb) {
+//     cb(null, new Date().toISOString().replace(/:/g, '-') + file.originalname);
+//   }
+// });
+
+// const upload = multer({ storage });
 
 /*****************  All routes require authorization *****************/
 
-router.get('/search', (req, res) => {
-  const title = req.query.title;
-  eventModel
-    .find({ title: new RegExp(title, 'i') })
-    .sort('-date')
-    .then(data => {
-      res.json(data);
-    })
-    .catch(err => res.status(400).json(err));
-});
+// router.get('/search', (req, res) => {
+//   const title = req.query.title;
+//   eventModel
+//     .find({ title: new RegExp(title, 'i') })
+//     .sort('-date')
+//     .then(data => {
+//       res.json(data);
+//     })
+//     .catch(err => res.status(400).json(err));
+// });
 
-router.get('/filter', (req, res) => {
-  const type = req.query.type;
-  eventModel
-    .find({ type })
-    .sort('-date')
-    .then(data => {
-      res.json(data);
-    })
-    .catch(err => res.status(400).json(err));
-});
+// router.get('/filter', (req, res) => {
+//   const type = req.query.type;
+//   eventModel
+//     .find({ type })
+//     .sort('-date')
+//     .then(data => {
+//       res.json(data);
+//     })
+//     .catch(err => res.status(400).json(err));
+// });
 
 /* GET All Events . 
 @Route : events/
 */
 router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => {
-  const archive = req.query.isArchived;
-  console.log('archive:', archive);
+  // const archive = req.query.isArchived;
 
-  if (!archive) {
-    eventModel
-      .find()
-      .sort('-date')
-      .then(data => {
-        res.json(data);
-      })
-      .catch(err => res.send(err));
-  } else {
-    eventModel
-      .find({ archive })
-      .sort('-date')
-      .then(data => {
-        res.json(data);
-      })
-      .catch(err => res.send(err));
-  }
+  eventModel
+    .find()
+    .sort('-date')
+    .then(data => {
+      res.json(data);
+    })
+    .catch(err => res.send(err));
+
+  // else {
+  //   eventModel
+  //     .find({ archive })
+  //     .sort('-date')
+  //     .then(data => {
+  //       res.json(data);
+  //     })
+  //     .catch(err => res.send(err));
+  // }
 });
 
 /* GET Single Events . 
@@ -73,7 +74,7 @@ router.get('/:id', passport.authenticate('jwt', { session: false }), (req, res) 
   };
 
   eventModel
-    .find(query)
+    .findOne(query)
     .then(data => {
       res.json(data);
     })
@@ -87,7 +88,7 @@ router.get('/:id', passport.authenticate('jwt', { session: false }), (req, res) 
 // second parameter upload.single('eventImage');
 router.post(
   '/add',
-  upload.single('eventImage'),
+  upload.single('imageData'),
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     newEvent = new eventModel({
@@ -96,13 +97,13 @@ router.post(
       dateEnd: req.body.dateEnd,
       description: req.body.description,
       type: req.body.type,
-      archive: false,
+      archived: false,
       url: req.body.url,
       image: req.file.path,
       user: req.body.user
     });
 
-    console.log('newEvent nodejs:', newEvent)
+    console.log('newEvent nodejs:', newEvent);
     newEvent
       .save()
       .then(event => res.json(event))
@@ -113,14 +114,18 @@ router.post(
 /* UPDATE Single Event. 
 @Route : events/update/:id
 */
-router.put('/update/:id',upload.single('eventImage'), passport.authenticate('jwt', { session: false }), (req, res) => {
-  const query = {
-    _id: req.params.id
-  };
+router.put(
+  '/update/:id',
+  upload.single('imageData'),
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    const query = {
+      _id: req.params.id
+    };
 
-  eventModel
-    .findOneAndUpdate(query, {
-      $set: {
+    let eventUpdated;
+    if (req.file) {
+      eventUpdated = {
         title: req.body.title,
         dateStart: req.body.dateStart,
         dateEnd: req.body.dateEnd,
@@ -130,11 +135,32 @@ router.put('/update/:id',upload.single('eventImage'), passport.authenticate('jwt
         url: req.body.url,
         image: req.file.path,
         user: req.body.user
-      }
-    })
-    .then(event => res.json(event))
-    .catch(err => res.status(400).json(err));
-});
+      };
+    } else {
+      eventUpdated = {
+        title: req.body.title,
+        dateStart: req.body.dateStart,
+        dateEnd: req.body.dateEnd,
+        description: req.body.description,
+        type: req.body.type,
+        archive: req.body.archive,
+        url: req.body.url,
+        user: req.body.user
+      };
+    }
+
+    eventModel
+      .findOneAndUpdate(
+        query,
+        {
+          $set: eventUpdated
+        },
+        { new: true }
+      )
+      .then(event => res.json(event))
+      .catch(err => res.status(400).json(err));
+  }
+);
 
 /* DELETE Single Event. 
 @Route : events/delete/:id
@@ -156,31 +182,25 @@ router.put('/archive/:id', (req, res) => {
   eventModel.findOneAndUpdate(
     query,
     {
-      $set: { archive: true }
+      $set: { archived: true }
     },
-
-    err => {
-      if (err) return res.send(err);
-      res.send('event archived.');
-    }
-  );
+    { new: true }
+  ).then(event => res.json(event))
+  .catch(err => res.status(400).json(err));
 });
 
-router.put('/unarchive/:id', function(req, res) {
+router.put('/unarchive/:id', (req, res) => {
   let query = {
     _id: req.params.id
   };
   eventModel.findOneAndUpdate(
     query,
     {
-      $set: { archive: false }
+      $set: { archived: false }
     },
-
-    function(err, meetings) {
-      if (err) return res.send(err);
-      res.send('event unarchived.');
-    }
-  );
+    { new: true }
+  )      .then(event => res.json(event))
+  .catch(err => res.status(400).json(err));
 });
 
 // router.get('/id/:id', function(req, res) {

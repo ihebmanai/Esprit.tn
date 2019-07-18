@@ -1,129 +1,94 @@
 import React, { Component } from 'react';
-import { Card, CardBody, CardHeader, Badge, Col, Row } from 'reactstrap';
-import axios from 'axios';
+import { Card, CardImg,CardBody, CardHeader, Badge, Col, Row } from 'reactstrap';
 import moment from 'moment';
+import { getEvent } from '../../actions/eventActions';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
+class detailsEvent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      event: {},
+      dateDebutString: null
+    };
+  }
 
 
+  componentDidMount() {
+    this.props.getEvent(this.props.match.params.id);
+  }
 
-export default class detailsEvent extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { 
-          event : {} , 
-          dateDebutString : null
-        };
-        
-        
-        
-      }
-
-      
-
-      componentDidMount() {
-        console.log('recuperation du details du Evenement'+this.props.match.params.id)
-        axios.get('http://localhost:5000/event/id/'+this.props.match.params.id).then((response)=>{
-           this.setState({
-             event : response.data
-           })
-           console.log(this.state.event.image)
-          });
-
-          
     
-        }
+  render() {
+    const { event } = this.props;
+    console.log('event:', event)
 
-      
-    
-    render() {
-     
-    
-        return (
-           
-            <div className="animated fadeIn">
+    return (
+      <div className="animated fadeIn">
         <Row>
           <Col xs="12" xl="6">
             <Card>
               <CardHeader>
-                <i className="fa fa-align-justify"></i><strong>Evénement : Image</strong>
-                <div className="card-header-actions">
-                  <a href="https://reactstrap.github.io/components/carousel/" rel="noreferrer noopener" target="_blank" className="card-header-action">
-                    <small className="text-muted">docs</small>
-                  </a>
-                </div>
+                <i className="fa fa-align-justify"></i>
+                <strong>Evénement : Image</strong>
               </CardHeader>
               <CardBody>
-                <img  src={`http://localhost:5000/${this.state.event.image}`} height='300px' width='480px' alt='' />
+              <CardImg src={`http://localhost:4000/${event.image}`} alt={event.image} />
               </CardBody>
             </Card>
           </Col>
           <Col xs="12" xl="6">
             <Card>
-            <CardHeader>
+              <CardHeader>
                 <i className="fa fa-align-justify"></i> Evénement <small>Détails</small>
                 <div className="card-header-actions">
-                  <Badge>Etat</Badge>
+                  <Badge>{event.type}</Badge>
                 </div>
               </CardHeader>
               <CardBody>
                 <div id="exampleAccordion" data-children=".item">
                   <div className="item">
-                   
-                     <h5>  Titre :</h5>
-                   
-                  
-                      <p className="mb-3">
-                       {this.state.event.title}
-                      </p> 
-                   
+                    <h5> Titre :</h5>
+
+                    <p className="mb-3">{event.title}</p>
                   </div>
                   <div className="item">
-                    
-                     <h5>Date Enregistrement :</h5> 
-                    
-                    
-                      <p className="mb-3">
-                        {this.state.event.date}
-                      </p>
-                   
+                    <h5>Date Enregistrement :</h5>
+
+                    <p className="mb-3">{event.createdAt}</p>
                   </div>
                   <div className="item">
-                    
-                      <h5> Date Debut - Date Fin :</h5>
-                    
-                    
-                      <p className="mb-3">
-                        Du {moment(this.state.event.dateDebut).format("MMM Do YY") } Jusqu'a {moment(this.state.event.dateFin).format("MMM Do YY")}
-                      </p>
-                   
+                    <h5> Date Debut - Date Fin :</h5>
+
+                    <p className="mb-3">
+                      Du {moment(event.dateStart).format('MMM Do YY')} Jusqu'a{' '}
+                      {moment(event.dateEnd).format('MMM Do YY')}
+                    </p>
                   </div>
                   <div className="item">
-                   
-                  <h5>Description :</h5> 
-                
-               
-                   <p className="mb-3">
-                     {this.state.event.description}
-                   </p>
-                
-               </div>
-               <div className="item">
-                   
-                   <h5>Url :</h5> 
-                
-               
-                   <p className="mb-3">
-                     {this.state.event.url}
-                   </p>
-                
-               </div>
-              
+                    <h5>Description :</h5>
+
+                    <p className="mb-3">{event.description}</p>
+                  </div>
+                  <div className="item">
+                    <h5>Url :</h5>
+
+                    <p className="mb-3">{event.url}</p>
+                  </div>
                 </div>
               </CardBody>
             </Card>
           </Col>
-          
         </Row>
       </div>
-        )
-    }
+    );
+  }
 }
+
+const mapStateToProps = state => ({
+  event: state.event.event
+
+});
+
+export default withRouter(connect(mapStateToProps,{getEvent})(detailsEvent));

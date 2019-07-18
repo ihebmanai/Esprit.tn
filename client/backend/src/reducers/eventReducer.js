@@ -4,7 +4,9 @@ import {
   GET_EVENT,
   DELETE_EVENT,
   EVENT_LOADING,
-  SEARCH_EVENT,
+  EDIT_EVENT,
+  UNARCHIVE_EVENT,
+  ARCHIVE_EVENT
 } from "../actions/types";
 
 const initialState = {
@@ -37,18 +39,28 @@ export default function(state = initialState, action) {
     case ADD_EVENT:
       return {
         ...state,
+        events: [...state.events,action.payload],
         event: action.payload
+      };
+    case EDIT_EVENT:
+      return {
+        ...state,
+        events: state.events.map((event) => event._id === action.payload._id ? event = action.payload : event)
       };
     case DELETE_EVENT:
       return {
         ...state,
         events: state.events.filter(event => event._id !== action.payload),
       };
-    case SEARCH_EVENT: 
+    case UNARCHIVE_EVENT: 
     return {
       ...state,
-      search: action.payload.events,
-      searching: action.payload.searching
+      events: state.events.map((event) => event._id === action.payload._id ? event = action.payload : event)
+    };
+    case ARCHIVE_EVENT: 
+    return {
+      ...state,
+      events: state.events.map((event) => event._id === action.payload._id ? event = action.payload : event)
     };
     default:
       return state;
