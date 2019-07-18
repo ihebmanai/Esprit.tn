@@ -26,7 +26,7 @@ class Events extends Component {
   };
 
   componentWillMount() {
-    this.props.getEvents();
+   this.props.getEvents();
   }
 
   handleArchivedEventsButton = () => {
