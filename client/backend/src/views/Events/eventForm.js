@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import DatePicker from 'react-date-picker';
 import {
   Card,
   CardBody,
@@ -23,8 +22,8 @@ class eventForm extends Component {
     super(props);
     this.state = {
       title: '',
-      dateStart: new Date(),
-      dateEnd: new Date(),
+      dateStart: '',
+      dateEnd: '',
       description: '',
       type: '',
       imageData: null,
@@ -47,16 +46,17 @@ class eventForm extends Component {
     });
   };
 
-  onChangeDateDebut = date => {
-    this.setState({
-      dateStart: date
-    });
-  };
-  onChangeDateFin = date => {
-    this.setState({
-      dateEnd: date
-    });
-  };
+  // onChangeDateStart = date => {
+  //   console.log('date:', date)
+  //   this.setState({
+  //     dateStart: date
+  //   });
+  // };
+  // onChangeDateEnd = date => {
+  //   this.setState({
+  //     dateEnd: date
+  //   });
+  // };
 
   handleInputChange = event => {
     this.setState({
@@ -112,7 +112,7 @@ class eventForm extends Component {
                   />
                   <FormText color="muted">Titre de l'évenement à ajouter</FormText>
                 </Col>
-                <Col md="8">
+                {/* <Col md="8">
                   <Label htmlFor="date-input">Date Debut : </Label>
                 </Col>
                 <Col xs="12" md="9">
@@ -120,22 +120,37 @@ class eventForm extends Component {
                     type="date"
                     name="dateStart"
                     onChange={this.onChangeDateDebut}
-                    value={this.state.dateStart}
+                    selected={this.state.dateStart}
                     placeholder="date Debut"
+                  />
+                </Col> */}
+                <Col md="8">
+                  <Label htmlFor="date-input">Date Start </Label>
+                </Col>
+                <Col xs="12" md="9">
+                  <Input
+                    onChange={this.handleInputChange}
+                    selected={this.state.dateStart}
+                    type="date"
+                    id="date-input"
+                    name="dateStart"
+                    placeholder="date debut"
                   />
                 </Col>
                 <Col md="8">
-                  <Label htmlFor="date-input">Date Fin : </Label>
+                  <Label htmlFor="date-input">Date End </Label>
                 </Col>
                 <Col xs="12" md="9">
-                  <DatePicker
+                  <Input
+                    onChange={this.handleInputChange}
+                    selected={this.state.dateEnd}
                     type="date"
+                    id="date-input"
                     name="dateEnd"
-                    value={this.state.dateEnd}
-                    onChange={this.onChangeDateFin}
-                    placeholder="date Fin"
+                    placeholder="date fin"
                   />
                 </Col>
+
                 <Col md="8">
                   <Label htmlFor="textarea-input">description</Label>
                 </Col>

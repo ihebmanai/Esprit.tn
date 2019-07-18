@@ -45,8 +45,8 @@ class Event extends Component {
           </CardHeader>
           <CardBody>
             <p>
-              Du <b>{moment(event.dateDebut).format('MMM Do YY')}</b> jusqu'à{' '}
-              <b>{moment(event.dateFin).format('MMM Do YY')}</b>{' '}
+              Du <b>{moment(event.dateStart).format('YYYY-MM-DD')}</b> jusqu'à{' '}
+              <b>{moment(event.dateEnd).format('YYYY-MM-DD')}</b>{' '}
             </p>
             <hr className="my-2" />
             <CardImg src={`http://localhost:4000/${event.image}`} alt={event.image} />
