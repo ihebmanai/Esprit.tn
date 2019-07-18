@@ -1,13 +1,18 @@
 var express = require('express');
 var router = express.Router();
-
-var press = require('../models/presse')
+const passport = require('passport');
+var pressModel = require('../models/presse')
 
 
 var multer = require('multer')
 
 
 //upload image 
+
+/*****************  All routes require authorization *****************/
+
+
+
 
 const storage = multer.diskStorage ({
   destination : function(req,file,cb) {
@@ -20,11 +25,22 @@ const storage = multer.diskStorage ({
 
 const upload = multer({storage:storage});
 
-router.get('/', function(req, res, next) {
+router.get('/search', (req, res) => {
+  const title = req.query.title;
+  pressModel
+    .find({ title: new RegExp(title, 'i') })
+    .sort('-date')
+    .then(data => {
+      res.json(data);
+    })
+    .catch(err => res.status(400).json(err));
+});
+// passport.authenticate('jwt', { session: false }),
+router.get('/', (req, res) => {
   var users = null ; 
-  press.find().sort('-date')
+  pressModel.find().sort('-date')
       .then((data)=>{
-         // res.setHeader("Access-Control-Allow-Origin", "*"),
+           // res.setHeader("Access-Control-Allow-Origin", "*"),
          // res.statusCode=200,
           //res.contentType('application/json'),
           res.json(data)
@@ -32,12 +48,19 @@ router.get('/', function(req, res, next) {
 });
 
 
-router.post('/add',upload.single('pressImage'),function(req,res){
 
-  var now = new Date()
-  m  = new press({
+
+
+
+//passport.authenticate('jwt', { session: false }),
+
+
+router.post('/add',upload.single('pressImage'),(req,res)=>
+{
+
+ 
+  m  = new pressModel({
     title : req.body.title,
-    date : now,
     desciption : req.body.desciption,
     url : req.body.url,
     type:req.body.type,
@@ -45,11 +68,11 @@ router.post('/add',upload.single('pressImage'),function(req,res){
     user:req.body.user
    
  });
- m.save(function(err,ques){
+ m.save((err,press)=>{
      if (err) 
          res.send(err)
      else 
-         res.send(ques)
+         res.send(press)
  }) 
  console.log(m)
  //console.log("reponses contenu"+ req.body.reponses)
@@ -87,7 +110,7 @@ router.delete('/delete/:id', function(req, res, next) {
       "_id" : req.params.id
   }
   //console.log(query)
-  press.remove(query,(err)=>{
+  pressModel.remove(query,(err)=>{
       if(err) {
           console.log('error supression');
           return;
@@ -99,20 +122,22 @@ router.delete('/delete/:id', function(req, res, next) {
 
 });
 
+/* GET Single PressActicle . 
+@Route : press/:id
+*/
 
-router.get('/id/:id',function(req,res){
+router.get('/:id',function(req,res){
 
-  var now = new Date()
+  
   let query = {
     "_id" : req.params.id
 }
-console.log('id'+req.params.id)
-press.findById(req.params.id,
-  
-  function (err, meetings) {
-    if (err) return res.send(err)
-    res.send(meetings);
-});
+pressModel
+    .findOne(query)
+    .then(data => {
+      res.json(data);
+    })
+    .catch(err => res.send(err));
 
 })
 
@@ -120,7 +145,7 @@ press.findById(req.params.id,
 router.get('/rapport', function(req, res, next) {
   var users = null ;
   var now = new Date() 
-  press.find()
+  pressModel.find()
       .then((data)=>{
          // res.setHeader("Access-Control-Allow-Origin", "*"),
          // res.statusCode=200,
@@ -143,7 +168,7 @@ router.get('/rapport', function(req, res, next) {
 router.get('/article', function(req, res, next) {
   var users = null ;
   var now = new Date() 
-  press.find()
+  pressModel.find()
       .then((data)=>{
          // res.setHeader("Access-Control-Allow-Origin", "*"),
          // res.statusCode=200,
@@ -165,7 +190,7 @@ router.get('/article', function(req, res, next) {
 router.get('/brochures', function(req, res, next) {
   var users = null ;
   var now = new Date() 
-  press.find()
+  pressModel.find()
       .then((data)=>{
          // res.setHeader("Access-Control-Allow-Origin", "*"),
          // res.statusCode=200,
@@ -187,7 +212,7 @@ router.get('/brochures', function(req, res, next) {
 router.get('/communique', function(req, res, next) {
   var users = null ;
   var now = new Date() 
-  press.find()
+  pressModel.find()
       .then((data)=>{
          // res.setHeader("Access-Control-Allow-Origin", "*"),
          // res.statusCode=200,
@@ -209,7 +234,7 @@ router.get('/communique', function(req, res, next) {
 router.get('/searsh',function(req,res){
   var title = req.query.title 
   console.log(title)
-  press.find({ 'title': new RegExp(title, 'i') }).sort('-date')
+  pressModel.find({ 'title': new RegExp(title, 'i') }).sort('-date')
   .then((data)=>{
      // res.setHeader("Access-Control-Allow-Origin", "*"),
      // res.statusCode=200,

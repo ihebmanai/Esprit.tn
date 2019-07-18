@@ -4,7 +4,6 @@ var Schema=mongoose.Schema;
 var pressSchema = mongoose.Schema({
 
     title:String,
-    date:Date,
     description :{
         type:String,
         required:false
@@ -22,6 +21,9 @@ var pressSchema = mongoose.Schema({
         type:String,
         required:false
     }
+},
+{
+    timestamps: true
 })
 var press =mongoose.model('press',pressSchema,'press');
 module.exports=press;

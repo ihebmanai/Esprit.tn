@@ -12,6 +12,11 @@ const detailsEvent = React.lazy(() => import('./views/Events/detailsEvent'));
 const Users = React.lazy(() => import("./views/Pages/Users/Users"));
 const User = React.lazy(() => import("./views/Pages/Users/User"));
 
+const showPress = React.lazy(() => import('./views/Presse/showPress'));
+const addPress = React.lazy(() => import('./views/Presse/addPress'));
+const updatePress = React.lazy(() => import('./views/Presse/updatePress'));
+const detailsPress = React.lazy(() => import('./views/Presse/detailsPress'));
+
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -27,6 +32,12 @@ const routes = [
   { path: '/events/add', exact: true, name: 'Ajouter', component: addEvents },
   { path: '/events/update/:id', exact: true, name: 'Modifier', component: updateEvent },
   { path: '/events/details/:id', exact: true, name: 'Details', component: detailsEvent },
+
+  
+  { path: '/presse', exact: true, name: 'Presse', component: showPress },
+  { path: '/presse/ajouter', exact: true, name: 'ajouter', component: addPress },
+  { path: '/presse/update/:id', exact: true, name: 'Modifier', component: updatePress },
+  { path: '/presse/details/:id', exact: true, name: 'Details', component: detailsPress },
 ];
 
 export default routes;
