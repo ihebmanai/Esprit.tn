@@ -1,6 +1,9 @@
 package-lock.json
 yarn.lock
 
+
+# image uploads
+uploads
 # OS or Editor folders
 .DS_Store
 .cache

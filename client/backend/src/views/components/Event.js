@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Button, Col, CardHeader, Card, CardBody, CardImg, Badge } from 'reactstrap';
-import { AppSwitch } from '@coreui/react';
 import moment from 'moment';
 import { deleteEvent, archiveEvent, unarchiveEvent } from '../../actions/eventActions';
 
@@ -16,14 +15,19 @@ class Event extends Component {
   handleEditButton = id => {
     this.props.history.push('/events/update/' + id);
   };
-  
-  onChange = (event) => {
-    if (event.archived) this.props.unarchiveEvent(event._id);
-    else this.props.archiveEvent(event._id);
+
+  handleChange = (archived, id) => {
+    if (archived) this.props.unarchiveEvent(id);
+    else this.props.archiveEvent(id);
   };
 
   render() {
     const { event } = this.props;
+    const deleteButton = (
+      <Button onClick={() => this.handleDeleteButton(event._id)} block color="danger">
+        Supprimer
+      </Button>
+    );
     return (
       <Col xs="12" sm="8" md="4">
         <Card>
@@ -33,14 +37,14 @@ class Event extends Component {
               {event.type}
             </Badge>
             <div className="card-header-actions">
-              <AppSwitch
-                className={'float-right mb-0'}
-                label
-                color={'info'}
+              <Button
+                className={'float-right'}
+                color={!event.archived ? 'success' : 'danger'}
                 size={'sm'}
-                checked={!event.archived}
-                onChange={() => this.onChange(event)}
-              />
+                onClick={() => this.handleChange(event.archived, event._id)}
+              >
+                {!event.archived ? 'Archive' : 'Unarchive'}
+              </Button>
             </div>
           </CardHeader>
           <CardBody>
@@ -57,30 +61,10 @@ class Event extends Component {
             <Button onClick={() => this.handleEditButton(event._id)} block color="warning">
               Modifier
             </Button>
-            <Button onClick={() => this.handleDeleteButton(event._id)} block color="danger">
-              Supprimer
-            </Button>
+            {!event.archived ? '' : deleteButton}
           </CardBody>
         </Card>
       </Col>
-
-      // <Card>
-      //   <CardImg src={`http://localhost:4000/${event.image}`} alt={event.image} />
-
-      //   <CardBody>
-      //     <CardTitle>{event.title}</CardTitle>
-      //     <CardSubtitle>
-      //       Du {moment(event.dateDebut).format('MMM Do YY')} jusqu'à{' '}
-      //       {moment(event.dateFin).format('MMM Do YY')}{' '}
-      //     </CardSubtitle>
-      //     <CardText>
-      //       <a href={event.url}>visiter le site</a>{' '}
-      //     </CardText>
-      //     <Link className="btn-pill btn btn-success btn-sm" to={`/events/details/${event._id}`}>
-      //       see details
-      //     </Link>
-      //   </CardBody>
-      // </Card>
     );
   }
 }
