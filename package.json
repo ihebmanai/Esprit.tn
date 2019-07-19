@@ -12,7 +12,7 @@
   "proxy": "http://localhost:4000",
   "scripts": {
     "client-back": "cd client/backend && npm start",
-    "client-front": "cd client/frontend && yarn start",
+    "client-front": "cd client/frontend && npm start",
     "server": "nodemon server.js",
     "start-back": "concurrently \"npm run server\" \"npm run client-back\"",
     "start-front": "concurrently \"npm run server\" \"npm run client-front\"",

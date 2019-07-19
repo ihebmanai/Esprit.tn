@@ -30,29 +30,6 @@ const multer = require('multer');
 
 module.exports = upload;
 
-/* 
-    stores image in uploads folder
-    using multer and creates a reference to the 
-    file
-*/
-// ImageRouter.route("/uploadmulter")
-//     .post(upload.single('imageData'), (req, res, next) => {
-//         console.log(req.body);
-//         const newImage = new Image({
-//             imageName: req.body.imageName,
-//             imageData: req.file.path
-//         });
-
-//         newImage.save()
-//             .then((result) => {
-//                 console.log(result);
-//                 res.status(200).json({
-//                     success: true,
-//                     document: result
-//                 });
-//             })
-//             .catch((err) => next(err));
-//     });
 
 
 
