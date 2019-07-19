@@ -13,6 +13,10 @@ var pressSchema = mongoose.Schema({
         enum:['rapport','article','brochure','communique'],
         required:false
     },
+    archived: {
+        type: Boolean,
+        required: false
+      },
     url :{
         type:String,
         required:false

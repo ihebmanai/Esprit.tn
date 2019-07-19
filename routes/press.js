@@ -38,7 +38,7 @@ router.get('/search', (req, res) => {
 // passport.authenticate('jwt', { session: false }),
 router.get('/', (req, res) => {
   var users = null ; 
-  pressModel.find().sort('-date')
+  pressModel.find({archived:false}).sort('-date')
       .then((data)=>{
            // res.setHeader("Access-Control-Allow-Origin", "*"),
          // res.statusCode=200,
@@ -63,6 +63,7 @@ router.post('/add',upload.single('pressImage'),(req,res)=>
     title : req.body.title,
     description : req.body.description,
     url : req.body.url,
+    archived : false,
     type:req.body.type,
     image : req.file.path,
     user:req.body.user
@@ -96,6 +97,7 @@ router.put(
         title: req.body.title,
         description: req.body.description,
         type: req.body.type,
+        archived: req.body.archived,
         url: req.body.url,
         image: req.file.path,
         user: req.body.user
@@ -104,6 +106,7 @@ router.put(
       eventUpdated = {
         title: req.body.title,
         description: req.body.description,
+        archived: req.body.archived,
         type: req.body.type,
         url: req.body.url,
         user: req.body.user
@@ -122,6 +125,34 @@ router.put(
       .catch(err => res.status(400).json(err));
   }
 );
+
+router.put('/archive/:id', (req, res) => {
+  let query = {
+    _id: req.params.id
+  };
+  pressModel.findOneAndUpdate(
+    query,
+    {
+      $set: { archived: true }
+    },
+    { new: true }
+  ).then(event => res.json(event))
+  .catch(err => res.status(400).json(err));
+});
+
+router.put('/unarchive/:id', (req, res) => {
+  let query = {
+    _id: req.params.id
+  };
+  pressModel.findOneAndUpdate(
+    query,
+    {
+      $set: { archived: false }
+    },
+    { new: true }
+  )      .then(event => res.json(event))
+  .catch(err => res.status(400).json(err));
+});
 
 
 router.delete('/delete/:id', function(req, res, next) {
