@@ -22,6 +22,7 @@ import BlogTwo from "./pages/BlogTwo";
 import SingleBlog from "./pages/SingleBlog";
 import ScrollUpBtn from "./components/ScrollUp";
 import Events from "./pages/Events";
+import Recrutment from "./pages/Recrutment";
 
 class App extends Component {
     render() {
@@ -62,6 +63,10 @@ class App extends Component {
                                                 path="/home-two"
                                                 component={HomeTwo}
                                             />
+                                                <Route
+                                                    path="/recrutment"
+                                                    component={Recrutment}
+                                                />
                                             <Route
                                                 path="/"
                                                 component={HomeOne}
