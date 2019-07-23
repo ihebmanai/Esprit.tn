@@ -21,6 +21,10 @@ import { Link } from 'react-router-dom';
         this.props.history.push('/presse/ajouter');
       };
 
+      handleArchivedEventsButton = () => {
+        this.props.history.push('/presse/archives');
+      }
+
     render()  {
         const { allPress } = this.props.press;
     
@@ -86,7 +90,7 @@ import { Link } from 'react-router-dom';
                         <InputGroup className="mt-2">
                           <Button onClick={this.handleArchivedEventsButton} block color="danger" outline>
                             <i className="fa fa-plus" />
-                            &nbsp;Evenements Archiveés
+                            &nbsp;Article Presse Archiveés
                           </Button>
                         </InputGroup>
                       </Col>

@@ -21,4 +21,5 @@ export const ADD_PRESS = "ADD_PRESS";
 export const DELETE_PRESS = "DELETE_PRESS";
 export const SEARCH_PRESS = "SEARCH_PRESS";
 export const EDIT_PRESS = "EDIT_PRESS";
+export const GET_ARCHIVED = "GET_ARCHIVED";
 

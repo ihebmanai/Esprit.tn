@@ -1,6 +1,7 @@
 import {
     ADD_PRESS,
     GET_PRESS,
+    GET_ARCHIVED,
     GET_ALL_PRESS,
     DELETE_PRESS,
     PRESS_LOADING,
@@ -29,6 +30,12 @@ import {
           allPress: action.payload,
           loading: false
         };
+        case GET_ARCHIVED:
+          return {
+            ...state,
+            allPress: action.payload,
+            loading: false
+          };
       case GET_PRESS:
         return {
           ...state,

@@ -3,6 +3,7 @@ import {
   ADD_PRESS,
   GET_ALL_PRESS,
   GET_PRESS,
+  GET_ARCHIVED,
   DELETE_PRESS,
   PRESS_LOADING,
   CLEAR_ERRORS,
@@ -43,6 +44,29 @@ export const getAllPress = () => dispatch => {
     .then(res => {
       dispatch({
         type: GET_ALL_PRESS,
+        payload: res.data
+      });
+    })
+    .catch(error => {
+      if (error.response && error.response.data) {
+        dispatch({
+          type: GET_ERRORS,
+          payload: {
+            message: error.response.data,
+            visible: true
+          }
+        })
+      }
+    })
+};
+
+export const getArchived = () => dispatch => {
+  dispatch(setPressLoading());
+  axios
+    .get("/press/archived")
+    .then(res => {
+      dispatch({
+        type: GET_ARCHIVED,
         payload: res.data
       });
     })

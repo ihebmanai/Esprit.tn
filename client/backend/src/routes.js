@@ -17,6 +17,7 @@ const showPress = React.lazy(() => import('./views/Presse/showPress'));
 const addPress = React.lazy(() => import('./views/Presse/addPress'));
 const updatePress = React.lazy(() => import('./views/Presse/updatePress'));
 const detailsPress = React.lazy(() => import('./views/Presse/detailsPress'));
+const archivePress = React.lazy(() => import('./views/Presse/ArchivePress'));
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
@@ -40,6 +41,7 @@ const routes = [
   { path: '/presse/ajouter', exact: true, name: 'ajouter', component: addPress },
   { path: '/presse/update/:id', exact: true, name: 'Modifier', component: updatePress },
   { path: '/presse/details/:id', exact: true, name: 'Details', component: detailsPress },
+  { path: '/presse/archives', exact: true, name: 'Archives', component: archivePress },
   
 ];
 

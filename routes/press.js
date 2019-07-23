@@ -35,10 +35,23 @@ router.get('/search', (req, res) => {
     })
     .catch(err => res.status(400).json(err));
 });
+
 // passport.authenticate('jwt', { session: false }),
-router.get('/', (req, res) => {
+router.get('/',  (req, res) => {
   var users = null ; 
   pressModel.find({archived:false}).sort('-date')
+      .then((data)=>{
+           // res.setHeader("Access-Control-Allow-Origin", "*"),
+         // res.statusCode=200,
+          //res.contentType('application/json'),
+          res.json(data)
+      })    
+});
+
+// passport.authenticate('jwt', { session: false }),
+router.get('/archived', (req, res) => {
+  var users = null ; 
+  pressModel.find({archived:true}).sort('-date')
       .then((data)=>{
            // res.setHeader("Access-Control-Allow-Origin", "*"),
          // res.statusCode=200,
@@ -193,18 +206,14 @@ pressModel
 
 
 router.get('/rapport', function(req, res, next) {
-  var users = null ;
-  var now = new Date() 
+  
   pressModel.find()
       .then((data)=>{
-         // res.setHeader("Access-Control-Allow-Origin", "*"),
-         // res.statusCode=200,
-          //res.contentType('application/json'),
-         // res.json(data)
-         let sports = [] 
+       
+         let rapports = [] 
          data.forEach(element => {
            if(element.type==='rapport'){
-                sports.push(element)
+                rapports.push(element)
            }
          });
          res.json(sports)
@@ -224,13 +233,13 @@ router.get('/article', function(req, res, next) {
          // res.statusCode=200,
           //res.contentType('application/json'),
          // res.json(data)
-         let sports = [] 
+         let articles = [] 
          data.forEach(element => {
            if(element.type==='article'){
-                sports.push(element)
+                articles.push(element)
            }
          });
-         res.json(sports)
+         res.json(articles)
       })
       
       
@@ -246,13 +255,13 @@ router.get('/brochures', function(req, res, next) {
          // res.statusCode=200,
           //res.contentType('application/json'),
          // res.json(data)
-         let sports = [] 
+         let brochures = [] 
          data.forEach(element => {
            if(element.type==='brochure'){
-                sports.push(element)
+                brochures.push(element)
            }
          });
-         res.json(sports)
+         res.json(brochures)
       })
       
       
@@ -260,21 +269,20 @@ router.get('/brochures', function(req, res, next) {
 
   
 router.get('/communique', function(req, res, next) {
-  var users = null ;
-  var now = new Date() 
+ 
   pressModel.find()
       .then((data)=>{
          // res.setHeader("Access-Control-Allow-Origin", "*"),
          // res.statusCode=200,
           //res.contentType('application/json'),
          // res.json(data)
-         let sports = [] 
+         let communiques = [] 
          data.forEach(element => {
            if(element.type==='communique'){
-                sports.push(element)
+                communiques.push(element)
            }
          });
-         res.json(sports)
+         res.json(communiques)
       })
       
       
@@ -283,7 +291,7 @@ router.get('/communique', function(req, res, next) {
   
 router.get('/searsh',function(req,res){
   var title = req.query.title 
-  console.log(title)
+ 
   pressModel.find({ 'title': new RegExp(title, 'i') }).sort('-date')
   .then((data)=>{
      // res.setHeader("Access-Control-Allow-Origin", "*"),
@@ -291,8 +299,35 @@ router.get('/searsh',function(req,res){
       //res.contentType('application/json'),
       res.json(data)
   }) 
-
 })
+
+router.put('/archive/:id', (req, res) => {
+  let query = {
+    _id: req.params.id
+  };
+  pressModel.findOneAndUpdate(
+    query,
+    {
+      $set: { archived: true }
+    },
+    { new: true }
+  ).then(press => res.json(press))
+  .catch(err => res.status(400).json(err));
+});
+
+router.put('/unarchive/:id', (req, res) => {
+  let query = {
+    _id: req.params.id
+  };
+  pressModel.findOneAndUpdate(
+    query,
+    {
+      $set: { archived: false }
+    },
+    { new: true }
+  )      .then(press => res.json(press))
+  .catch(err => res.status(400).json(err));
+});
 
 
 
