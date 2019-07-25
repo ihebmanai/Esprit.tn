@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Icofont from 'react-icofont';
 import PropTypes from "prop-types";
 import { Link } from 'react-router-dom';
-
 import Sidebar from "./Sidebar";
 
 class BlogPost extends Component {

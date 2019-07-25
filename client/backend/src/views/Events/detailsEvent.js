@@ -22,7 +22,6 @@ class detailsEvent extends Component {
     
   render() {
     const { event } = this.props;
-    console.log('event:', event)
 
     return (
       <div className="animated fadeIn">
@@ -88,7 +87,6 @@ class detailsEvent extends Component {
 
 const mapStateToProps = state => ({
   event: state.event.event
-
 });
 
 export default withRouter(connect(mapStateToProps,{getEvent})(detailsEvent));

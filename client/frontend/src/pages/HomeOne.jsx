@@ -11,7 +11,7 @@ import About from "../components/About";
 import Blog from "../components/Blog";
 import VideoArea from "../components/VideoArea";
 // import Pricing from "../components/Pricing";
-import FunFacts from "../components/FunFacts";
+//import FunFacts from "../components/FunFacts";
 import Testimonials from "../components/Testimonials";
 import FAQ from "../components/FAQ";
 import Partner from "../components/Partner";
