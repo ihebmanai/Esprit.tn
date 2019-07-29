@@ -7,9 +7,10 @@ const upload = require('../utils/Uploader');
 /* GET All Events . 
 @Route : events/
 */
-router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => {
+router.get('/', (req, res) => {
   eventModel
     .find()
+    .populate('user')
     .sort('-date')
     .then(data => {
       res.json(data);
@@ -21,13 +22,14 @@ router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => 
 /* GET Single Events . 
 @Route : events/:id
 */
-router.get('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+router.get('/:id', (req, res) => {
   const query = {
     _id: req.params.id
   };
 
   eventModel
     .findOne(query)
+    .populate('user')
     .then(data => {
       res.json(data);
     })
