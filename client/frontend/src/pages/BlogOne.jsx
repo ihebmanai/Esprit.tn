@@ -11,20 +11,20 @@ import Footer from '../components/Footer';
 class BlogOne extends Component {
   state = {
     months: [
-      'January',
-      'February',
-      'March',
-      'April',
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
       'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December'
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec'
     ]
-  };
+};
   extractDay = date => {
     const dateMilli = Date.parse(date);
     return new Date(dateMilli * 1000).getDay();
