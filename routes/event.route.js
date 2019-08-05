@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const eventModel = require('../models/event.model');
 const passport = require('passport');
-const upload = require('../utils/Uploader');
+const {upload} = require('../utils/Uploader');
 
 
 /* GET All Events . 

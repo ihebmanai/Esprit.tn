@@ -1,0 +1,420 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Esprit.tn/press",
+		"_postman_id": "153371dd-59f3-52d9-f708-76aa93538043",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "press",
+			"description": "",
+			"item": [
+				{
+					"name": "Add Press",
+					"request": {
+						"url": "http://localhost:4000/api/press/add",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNDgwMjllMmUzZjgzMGE1MGM0NWJjNCIsInVzZXJuYW1lIjoibW9udGEiLCJlbWFpbCI6ImlkcmlzLm1haGpvdWJpQGVzcHJpdC50bnhjeCIsImF2YXRhciI6Imh0dHA6Ly93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci8wNTE3MWEyMDhhNWE1ZjdmZDY1YjQ0M2E5ZDg0NzhlMT9zPTEwMCZyPXgmZD1yZXRybyIsImlhdCI6MTU2NTAwMDM3MCwiZXhwIjoxNTY2NzI4MzcwfQ.YK95kK-AsOiveiUpbI6n5wdiJbmPjOuk9li8yLDawhU",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "testPress archived",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "description of press test archived",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "url",
+									"value": "www.google.com",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "archived",
+									"value": "true",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "rapport",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "files",
+									"description": "",
+									"type": "file",
+									"src": "2158_07422280015634322625d301546b53a5.pdf"
+								},
+								{
+									"key": "files",
+									"description": "",
+									"type": "file",
+									"src": "56890384_2487569788132430_810957308010954752_n.png"
+								},
+								{
+									"key": "user",
+									"value": "monta",
+									"description": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "update Press",
+					"request": {
+						"url": "http://localhost:4000/api/press/update/5d4867cd96ff5c4ff410db67",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNDgwMjllMmUzZjgzMGE1MGM0NWJjNCIsInVzZXJuYW1lIjoibW9udGEiLCJlbWFpbCI6ImlkcmlzLm1haGpvdWJpQGVzcHJpdC50bnhjeCIsImF2YXRhciI6Imh0dHA6Ly93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci8wNTE3MWEyMDhhNWE1ZjdmZDY1YjQ0M2E5ZDg0NzhlMT9zPTEwMCZyPXgmZD1yZXRybyIsImlhdCI6MTU2NTAwMDM3MCwiZXhwIjoxNTY2NzI4MzcwfQ.YK95kK-AsOiveiUpbI6n5wdiJbmPjOuk9li8yLDawhU",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "test update",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "update test description",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "url",
+									"value": "www.yahoo.fr",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "archived",
+									"value": "true",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "rapport",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "files",
+									"value": "",
+									"description": "",
+									"type": "file"
+								},
+								{
+									"key": "files",
+									"value": "",
+									"description": "",
+									"type": "file"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Archive",
+					"request": {
+						"url": "http://localhost:4000/api/press/archive/5d4867cd96ff5c4ff410db67",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNDgwMjllMmUzZjgzMGE1MGM0NWJjNCIsInVzZXJuYW1lIjoibW9udGEiLCJlbWFpbCI6ImlkcmlzLm1haGpvdWJpQGVzcHJpdC50bnhjeCIsImF2YXRhciI6Imh0dHA6Ly93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci8wNTE3MWEyMDhhNWE1ZjdmZDY1YjQ0M2E5ZDg0NzhlMT9zPTEwMCZyPXgmZD1yZXRybyIsImlhdCI6MTU2NTAwMDM3MCwiZXhwIjoxNTY2NzI4MzcwfQ.YK95kK-AsOiveiUpbI6n5wdiJbmPjOuk9li8yLDawhU",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "unarchive",
+					"request": {
+						"url": "http://localhost:4000/api/press/unarchive/5d4867cd96ff5c4ff410db67",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNDgwMjllMmUzZjgzMGE1MGM0NWJjNCIsInVzZXJuYW1lIjoibW9udGEiLCJlbWFpbCI6ImlkcmlzLm1haGpvdWJpQGVzcHJpdC50bnhjeCIsImF2YXRhciI6Imh0dHA6Ly93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci8wNTE3MWEyMDhhNWE1ZjdmZDY1YjQ0M2E5ZDg0NzhlMT9zPTEwMCZyPXgmZD1yZXRybyIsImlhdCI6MTU2NTAwMDM3MCwiZXhwIjoxNTY2NzI4MzcwfQ.YK95kK-AsOiveiUpbI6n5wdiJbmPjOuk9li8yLDawhU",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"url": "http://localhost:4000/api/press/delete/5d486c3c34d7391eece7891d",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNDgwMjllMmUzZjgzMGE1MGM0NWJjNCIsInVzZXJuYW1lIjoibW9udGEiLCJlbWFpbCI6ImlkcmlzLm1haGpvdWJpQGVzcHJpdC50bnhjeCIsImF2YXRhciI6Imh0dHA6Ly93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci8wNTE3MWEyMDhhNWE1ZjdmZDY1YjQ0M2E5ZDg0NzhlMT9zPTEwMCZyPXgmZD1yZXRybyIsImlhdCI6MTU2NTAwMDM3MCwiZXhwIjoxNTY2NzI4MzcwfQ.YK95kK-AsOiveiUpbI6n5wdiJbmPjOuk9li8yLDawhU",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get All By Type",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/api/press/allbytype?type=rapport",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"press",
+								"allbytype"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "rapport",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNDgwMjllMmUzZjgzMGE1MGM0NWJjNCIsInVzZXJuYW1lIjoibW9udGEiLCJlbWFpbCI6ImlkcmlzLm1haGpvdWJpQGVzcHJpdC50bnhjeCIsImF2YXRhciI6Imh0dHA6Ly93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci8wNTE3MWEyMDhhNWE1ZjdmZDY1YjQ0M2E5ZDg0NzhlMT9zPTEwMCZyPXgmZD1yZXRybyIsImlhdCI6MTU2NTAwMDM3MCwiZXhwIjoxNTY2NzI4MzcwfQ.YK95kK-AsOiveiUpbI6n5wdiJbmPjOuk9li8yLDawhU",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Unarchived",
+					"request": {
+						"url": "http://localhost:4000/api/press",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Archived Only",
+					"request": {
+						"url": "http://localhost:4000/api/press/archived",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNDgwMjllMmUzZjgzMGE1MGM0NWJjNCIsInVzZXJuYW1lIjoibW9udGEiLCJlbWFpbCI6ImlkcmlzLm1haGpvdWJpQGVzcHJpdC50bnhjeCIsImF2YXRhciI6Imh0dHA6Ly93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci8wNTE3MWEyMDhhNWE1ZjdmZDY1YjQ0M2E5ZDg0NzhlMT9zPTEwMCZyPXgmZD1yZXRybyIsImlhdCI6MTU2NTAwMDM3MCwiZXhwIjoxNTY2NzI4MzcwfQ.YK95kK-AsOiveiUpbI6n5wdiJbmPjOuk9li8yLDawhU",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Id All",
+					"request": {
+						"url": "http://localhost:4000/api/press/archived/5d486c6d34d7391eece7891e",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNDgwMjllMmUzZjgzMGE1MGM0NWJjNCIsInVzZXJuYW1lIjoibW9udGEiLCJlbWFpbCI6ImlkcmlzLm1haGpvdWJpQGVzcHJpdC50bnhjeCIsImF2YXRhciI6Imh0dHA6Ly93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci8wNTE3MWEyMDhhNWE1ZjdmZDY1YjQ0M2E5ZDg0NzhlMT9zPTEwMCZyPXgmZD1yZXRybyIsImlhdCI6MTU2NTAwMDM3MCwiZXhwIjoxNTY2NzI4MzcwfQ.YK95kK-AsOiveiUpbI6n5wdiJbmPjOuk9li8yLDawhU",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Id",
+					"request": {
+						"url": "http://localhost:4000/api/press/get/5d486c6d34d7391eece7891e",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Type Unarchived",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/api/press/bytype?type=rapport",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"press",
+								"bytype"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "rapport",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNDgwMjllMmUzZjgzMGE1MGM0NWJjNCIsInVzZXJuYW1lIjoibW9udGEiLCJlbWFpbCI6ImlkcmlzLm1haGpvdWJpQGVzcHJpdC50bnhjeCIsImF2YXRhciI6Imh0dHA6Ly93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci8wNTE3MWEyMDhhNWE1ZjdmZDY1YjQ0M2E5ZDg0NzhlMT9zPTEwMCZyPXgmZD1yZXRybyIsImlhdCI6MTU2NTAwMDM3MCwiZXhwIjoxNTY2NzI4MzcwfQ.YK95kK-AsOiveiUpbI6n5wdiJbmPjOuk9li8yLDawhU",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Search by title unarchived",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/api/press/search?title=test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"press",
+								"search"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "test",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Search by title All",
+					"request": {
+						"url": {
+							"raw": "http://localhost:4000/api/press/searchAll?title=test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"press",
+								"searchAll"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "test",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNDgwMjllMmUzZjgzMGE1MGM0NWJjNCIsInVzZXJuYW1lIjoibW9udGEiLCJlbWFpbCI6ImlkcmlzLm1haGpvdWJpQGVzcHJpdC50bnhjeCIsImF2YXRhciI6Imh0dHA6Ly93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci8wNTE3MWEyMDhhNWE1ZjdmZDY1YjQ0M2E5ZDg0NzhlMT9zPTEwMCZyPXgmZD1yZXRybyIsImlhdCI6MTU2NTAwMDM3MCwiZXhwIjoxNTY2NzI4MzcwfQ.YK95kK-AsOiveiUpbI6n5wdiJbmPjOuk9li8yLDawhU",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"url": "http://localhost:4000/api/press/getAll",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNDgwMjllMmUzZjgzMGE1MGM0NWJjNCIsInVzZXJuYW1lIjoibW9udGEiLCJlbWFpbCI6ImlkcmlzLm1haGpvdWJpQGVzcHJpdC50bnhjeCIsImF2YXRhciI6Imh0dHA6Ly93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci8wNTE3MWEyMDhhNWE1ZjdmZDY1YjQ0M2E5ZDg0NzhlMT9zPTEwMCZyPXgmZD1yZXRybyIsImlhdCI6MTU2NTAwMDM3MCwiZXhwIjoxNTY2NzI4MzcwfQ.YK95kK-AsOiveiUpbI6n5wdiJbmPjOuk9li8yLDawhU",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
