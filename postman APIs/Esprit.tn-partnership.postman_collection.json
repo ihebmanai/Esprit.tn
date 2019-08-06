@@ -1,0 +1,217 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Esprit.tn\\partnership",
+		"_postman_id": "b5b24c05-99af-baec-39bf-862ee1282407",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Partnership",
+			"request": {
+				"url": "http://localhost:4000/api/partnership/add",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNDgwMjllMmUzZjgzMGE1MGM0NWJjNCIsInVzZXJuYW1lIjoibW9udGEiLCJlbWFpbCI6ImlkcmlzLm1haGpvdWJpQGVzcHJpdC50bnhjeCIsImF2YXRhciI6Imh0dHA6Ly93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci8wNTE3MWEyMDhhNWE1ZjdmZDY1YjQ0M2E5ZDg0NzhlMT9zPTEwMCZyPXgmZD1yZXRybyIsImlhdCI6MTU2NTA4MjMxNywiZXhwIjoxNTY2ODEwMzE3fQ.eu8GqQa77t_6_UclOPvwM1gMz0TBHIKGYhpKjWtaxrQ",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "new partnership",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "new partnership description",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "url",
+							"value": "www.google.fr",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"description": "",
+							"type": "file",
+							"src": "64451317_2031891140453252_7765669907642974208_n.jpg"
+						},
+						{
+							"key": "type",
+							"value": "technological",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "update partnership by Id",
+			"request": {
+				"url": "http://localhost:4000/api/partnership/update/5d495e52ce54c82178e3aa93",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNDgwMjllMmUzZjgzMGE1MGM0NWJjNCIsInVzZXJuYW1lIjoibW9udGEiLCJlbWFpbCI6ImlkcmlzLm1haGpvdWJpQGVzcHJpdC50bnhjeCIsImF2YXRhciI6Imh0dHA6Ly93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci8wNTE3MWEyMDhhNWE1ZjdmZDY1YjQ0M2E5ZDg0NzhlMT9zPTEwMCZyPXgmZD1yZXRybyIsImlhdCI6MTU2NTA4MjMxNywiZXhwIjoxNTY2ODEwMzE3fQ.eu8GqQa77t_6_UclOPvwM1gMz0TBHIKGYhpKjWtaxrQ",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "new rdi team",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "new sport team description",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "url",
+							"value": "www.google.fr",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "academic",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"description": "",
+							"type": "file",
+							"src": "64682442_10214909532240060_8456431851500732416_n.jpg",
+							"disabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get partnerships",
+			"request": {
+				"url": "http://localhost:4000/api/partnership/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete partnership by Id",
+			"request": {
+				"url": "http://localhost:4000/api/partnership /delete/5d495e52ce54c82178e3aa93",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNDgwMjllMmUzZjgzMGE1MGM0NWJjNCIsInVzZXJuYW1lIjoibW9udGEiLCJlbWFpbCI6ImlkcmlzLm1haGpvdWJpQGVzcHJpdC50bnhjeCIsImF2YXRhciI6Imh0dHA6Ly93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci8wNTE3MWEyMDhhNWE1ZjdmZDY1YjQ0M2E5ZDg0NzhlMT9zPTEwMCZyPXgmZD1yZXRybyIsImlhdCI6MTU2NTA4MjMxNywiZXhwIjoxNTY2ODEwMzE3fQ.eu8GqQa77t_6_UclOPvwM1gMz0TBHIKGYhpKjWtaxrQ",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get partnership by Id",
+			"request": {
+				"url": "http://localhost:4000/api/partnership/id/5d495e52ce54c82178e3aa93",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Search partnership by title",
+			"request": {
+				"url": {
+					"raw": "http://localhost:4000/api/partnership/search?title=new",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"partnership",
+						"search"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "new",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Search partnership by type",
+			"request": {
+				"url": {
+					"raw": "http://localhost:4000/api/partnership/type?type=technological",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"partnership",
+						"type"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "technological",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

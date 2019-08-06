@@ -16,11 +16,12 @@ const newsRouter = require('./news');
 const departementRouter = require('./departement');
 const rdiRouter = require('./rdi.route');
 const partnershipRouter = require('./partnership.route');
+const sliderRouter = require('./slider.route');
 
 router.get('/', (req, res) => {
-	res.send({
-		success: true
-	});
+  res.send({
+    success: true
+  });
 });
 
 router.use('/user', userRoutes);
@@ -38,4 +39,6 @@ router.use('/news', newsRouter);
 router.use('/departement', departementRouter);
 router.use('/rdi', rdiRouter);
 router.use('/partnership', partnershipRouter);
+router.use('/slider', sliderRouter);
+
 module.exports = router;

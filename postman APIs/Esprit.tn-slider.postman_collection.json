@@ -1,0 +1,234 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Esprit.tn\\slider",
+		"_postman_id": "ce668413-acc2-99bf-91d5-c7deb3b4b01c",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Slider",
+			"request": {
+				"url": "http://localhost:4000/api/slider/add",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNDgwMjllMmUzZjgzMGE1MGM0NWJjNCIsInVzZXJuYW1lIjoibW9udGEiLCJlbWFpbCI6ImlkcmlzLm1haGpvdWJpQGVzcHJpdC50bnhjeCIsImF2YXRhciI6Imh0dHA6Ly93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci8wNTE3MWEyMDhhNWE1ZjdmZDY1YjQ0M2E5ZDg0NzhlMT9zPTEwMCZyPXgmZD1yZXRybyIsImlhdCI6MTU2NTA4MjMxNywiZXhwIjoxNTY2ODEwMzE3fQ.eu8GqQa77t_6_UclOPvwM1gMz0TBHIKGYhpKjWtaxrQ",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "new Slider",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "url",
+							"value": "www.google.fr",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"description": "",
+							"type": "file",
+							"src": "64451317_2031891140453252_7765669907642974208_n.jpg"
+						},
+						{
+							"key": "status",
+							"value": "active",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "update slider by Id",
+			"request": {
+				"url": "http://localhost:4000/api/slider/update/5d496569f4ff0e4a70901a06",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNDgwMjllMmUzZjgzMGE1MGM0NWJjNCIsInVzZXJuYW1lIjoibW9udGEiLCJlbWFpbCI6ImlkcmlzLm1haGpvdWJpQGVzcHJpdC50bnhjeCIsImF2YXRhciI6Imh0dHA6Ly93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci8wNTE3MWEyMDhhNWE1ZjdmZDY1YjQ0M2E5ZDg0NzhlMT9zPTEwMCZyPXgmZD1yZXRybyIsImlhdCI6MTU2NTA4MjMxNywiZXhwIjoxNTY2ODEwMzE3fQ.eu8GqQa77t_6_UclOPvwM1gMz0TBHIKGYhpKjWtaxrQ",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "updated slider title",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "url",
+							"value": "www.google.fr",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "status",
+							"value": "inactive",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"description": "",
+							"type": "file",
+							"src": "64682442_10214909532240060_8456431851500732416_n.jpg",
+							"disabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get active sliders",
+			"request": {
+				"url": "http://localhost:4000/api/slider/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get all sliders",
+			"request": {
+				"url": "http://localhost:4000/api/slider/all",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNDgwMjllMmUzZjgzMGE1MGM0NWJjNCIsInVzZXJuYW1lIjoibW9udGEiLCJlbWFpbCI6ImlkcmlzLm1haGpvdWJpQGVzcHJpdC50bnhjeCIsImF2YXRhciI6Imh0dHA6Ly93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci8wNTE3MWEyMDhhNWE1ZjdmZDY1YjQ0M2E5ZDg0NzhlMT9zPTEwMCZyPXgmZD1yZXRybyIsImlhdCI6MTU2NTA4MjMxNywiZXhwIjoxNTY2ODEwMzE3fQ.eu8GqQa77t_6_UclOPvwM1gMz0TBHIKGYhpKjWtaxrQ",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete slider by Id",
+			"request": {
+				"url": "http://localhost:4000/api/slider/delete/5d496569f4ff0e4a70901a06",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNDgwMjllMmUzZjgzMGE1MGM0NWJjNCIsInVzZXJuYW1lIjoibW9udGEiLCJlbWFpbCI6ImlkcmlzLm1haGpvdWJpQGVzcHJpdC50bnhjeCIsImF2YXRhciI6Imh0dHA6Ly93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci8wNTE3MWEyMDhhNWE1ZjdmZDY1YjQ0M2E5ZDg0NzhlMT9zPTEwMCZyPXgmZD1yZXRybyIsImlhdCI6MTU2NTA4MjMxNywiZXhwIjoxNTY2ODEwMzE3fQ.eu8GqQa77t_6_UclOPvwM1gMz0TBHIKGYhpKjWtaxrQ",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get slider by Id",
+			"request": {
+				"url": "http://localhost:4000/api/slider/id/5d496569f4ff0e4a70901a06",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNDgwMjllMmUzZjgzMGE1MGM0NWJjNCIsInVzZXJuYW1lIjoibW9udGEiLCJlbWFpbCI6ImlkcmlzLm1haGpvdWJpQGVzcHJpdC50bnhjeCIsImF2YXRhciI6Imh0dHA6Ly93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci8wNTE3MWEyMDhhNWE1ZjdmZDY1YjQ0M2E5ZDg0NzhlMT9zPTEwMCZyPXgmZD1yZXRybyIsImlhdCI6MTU2NTA4MjMxNywiZXhwIjoxNTY2ODEwMzE3fQ.eu8GqQa77t_6_UclOPvwM1gMz0TBHIKGYhpKjWtaxrQ",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Search slider by title",
+			"request": {
+				"url": {
+					"raw": "http://localhost:4000/api/slider/search?title=slider",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"slider",
+						"search"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "slider",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Search slider by type",
+			"request": {
+				"url": {
+					"raw": "http://localhost:4000/api/slider/searchall?title=slider",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"slider",
+						"searchall"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "slider",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNDgwMjllMmUzZjgzMGE1MGM0NWJjNCIsInVzZXJuYW1lIjoibW9udGEiLCJlbWFpbCI6ImlkcmlzLm1haGpvdWJpQGVzcHJpdC50bnhjeCIsImF2YXRhciI6Imh0dHA6Ly93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci8wNTE3MWEyMDhhNWE1ZjdmZDY1YjQ0M2E5ZDg0NzhlMT9zPTEwMCZyPXgmZD1yZXRybyIsImlhdCI6MTU2NTA4MjMxNywiZXhwIjoxNTY2ODEwMzE3fQ.eu8GqQa77t_6_UclOPvwM1gMz0TBHIKGYhpKjWtaxrQ",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
