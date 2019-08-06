@@ -15,6 +15,7 @@ const infraRouter = require('./infrastructure');
 const actRouter = require('./actualite');
 const newsRouter = require('./news');
 const departementRouter = require('./departement');
+const rdiRouter = require('./rdi.route');
 
 router.get('/', (req, res) => {
 	res.send({
@@ -36,5 +37,6 @@ router.use('/infrastructure', infraRouter);
 router.use('/act', actRouter);
 router.use('/news', newsRouter);
 router.use('/departement', departementRouter);
+router.use('/rdi', rdiRouter);
 
 module.exports = router;

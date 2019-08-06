@@ -1,6 +1,5 @@
 var mongoose = require('mongoose')
 const { clubTypes, sportTypes } = require('../enums/club.types');
-var Schema=mongoose.Schema;
 var clubSchema = mongoose.Schema({
 
     title:String,

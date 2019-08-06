@@ -2,45 +2,44 @@ var express = require('express');
 var router = express.Router();
 const passport = require('passport');
 const { upload } = require('../utils/Uploader');
-var { ClubModel } = require('../models/index');
+var { RdiModel } = require('../models/index');
 
-/* GET All Clubs . 
-@Route : club/
+/* GET All Rdi . 
+@Route : rdi/
 */
 router.get('/', function(req, res, next) {
-  ClubModel.find()
+  RdiModel.find()
     .sort('-date')
     .then(data => {
       res.json(data);
     });
 });
 
-/* GET add Club . 
-@Route : club/add
+/* GET add Rdi . 
+@Route : rdi/add
 */
 router.post(
   '/add',
   upload.single('image'),
   passport.authenticate('jwt', { session: false }),
   function(req, res) {
-    newClub = new ClubModel({
+    newRdi = new RdiModel({
       title: req.body.title,
       date: new Date(),
-      type: req.body.type,
-      sport: req.body.sport,
+      memebers: req.body.memebers,
       desciption: req.body.desciption,
       url: req.body.url,
       image: req.file.path
     });
-    newClub.save(function(err, result) {
+    newRdi.save(function(err, result) {
       if (err) res.send(err);
       else res.send(result);
     });
   }
 );
 
-/* UPDATE Club by Id . 
-@Route : club/update/:id
+/* UPDATE Rdi by Id . 
+@Route : rdi/update/:id
 */
 router.put(
   '/update/:id',
@@ -48,14 +47,13 @@ router.put(
   passport.authenticate('jwt', { session: false }),
   function(req, res) {
     if (req.file) {
-      ClubModel.findOneAndUpdate(
+      RdiModel.findOneAndUpdate(
         req.params.id,
         {
           $set: {
             title: req.body.title,
             date: new Date(),
-            type: req.body.type,
-            sport: req.body.sport,
+            memebers: req.body.memebers,
             desciption: req.body.desciption,
             url: req.body.url,
             image: req.file.path
@@ -68,14 +66,13 @@ router.put(
         }
       );
     } else {
-      ClubModel.findByIdAndUpdate(
+      RdiModel.findByIdAndUpdate(
         req.params.id,
         {
           $set: {
             title: req.body.title,
             date: new Date(),
-            type: req.body.type,
-            sport: req.body.sport,
+            memebers: req.body.memebers,
             desciption: req.body.desciption,
             url: req.body.url
           }
@@ -90,8 +87,8 @@ router.put(
   }
 );
 
-/* DELETE Club by Id . 
-@Route : club/delete/:id
+/* DELETE Rdi by Id . 
+@Route : rdi/delete/:id
 */
 router.delete('/delete/:id', passport.authenticate('jwt', { session: false }), function(
   req,
@@ -101,64 +98,35 @@ router.delete('/delete/:id', passport.authenticate('jwt', { session: false }), f
   let query = {
     _id: req.params.id
   };
-  ClubModel.remove(query, err => {
+  RdiModel.remove(query, err => {
     if (err) {
       res.status(500).json(err);
       return;
     } else {
-      res.status(204).send('Club deleted');
+      res.status(204).send('Rdi deleted');
     }
   });
 });
 
-/* GET Club by Id . 
-@Route : club/id/:id
+/* GET Rdi by Id . 
+@Route : rdi/id/:id
 */
 router.get('/id/:id', function(req, res) {
   let query = {
     _id: req.params.id
   };
-  ClubModel.findById(query, function(err, Club) {
+  RdiModel.findById(query, function(err, Rdi) {
     if (err) return res.send(err);
-    res.send(Club);
+    res.send(Rdi);
   });
 });
 
-/* GET All Clubs by type . 
-@Route : club/type
-*/
-router.get('/type', function(req, res, next) {
-  let query = {
-    type: req.query.type
-  };
-  ClubModel.find(query)
-    .sort('-date')
-    .then(data => {
-      res.json(data);
-    });
-});
-
-/* GET All SPORTS Clubs by type . 
-@Route : club/sportType
-*/
-router.get('/sportType', function(req, res, next) {
-  let query = {
-    sport: req.query.sport,
-    type: 'sports'
-  };
-  ClubModel.find(query)
-    .sort('-date')
-    .then(data => {
-      res.json(data);
-    });
-});
-
-/* Search clubs by title . 
-@Route : club/search
+/* Search Rdi by title . 
+@Route : rdi/search
 */
 router.get('/search', function(req, res) {
   var title = req.query.title;
-  ClubModel.find({ title: new RegExp(title, 'i') })
+  RdiModel.find({ title: new RegExp(title, 'i') })
     .sort('-date')
     .then(data => {
       res.json(data);
