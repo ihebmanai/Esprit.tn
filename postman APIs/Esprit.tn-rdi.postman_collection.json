@@ -1,0 +1,203 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Esprit.tn\\rdi",
+		"_postman_id": "392abceb-8f3f-c4ea-c950-f1f966132657",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Rdi",
+			"request": {
+				"url": "http://localhost:4000/api/rdi/add",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNDgwMjllMmUzZjgzMGE1MGM0NWJjNCIsInVzZXJuYW1lIjoibW9udGEiLCJlbWFpbCI6ImlkcmlzLm1haGpvdWJpQGVzcHJpdC50bnhjeCIsImF2YXRhciI6Imh0dHA6Ly93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci8wNTE3MWEyMDhhNWE1ZjdmZDY1YjQ0M2E5ZDg0NzhlMT9zPTEwMCZyPXgmZD1yZXRybyIsImlhdCI6MTU2NTA4MjMxNywiZXhwIjoxNTY2ODEwMzE3fQ.eu8GqQa77t_6_UclOPvwM1gMz0TBHIKGYhpKjWtaxrQ",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "new rdi team",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "new sport team description",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "url",
+							"value": "www.google.fr",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"description": "",
+							"type": "file",
+							"src": "64682442_10214909532240060_8456431851500732416_n.jpg"
+						},
+						{
+							"key": "memebers",
+							"value": "Montassar Laribi",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "memebers",
+							"value": "Idriss Mahjoubi",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "update rdi bt Id",
+			"request": {
+				"url": "http://localhost:4000/api/rdi/update/5d4957fcccd8d64f745dcb37",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNDgwMjllMmUzZjgzMGE1MGM0NWJjNCIsInVzZXJuYW1lIjoibW9udGEiLCJlbWFpbCI6ImlkcmlzLm1haGpvdWJpQGVzcHJpdC50bnhjeCIsImF2YXRhciI6Imh0dHA6Ly93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci8wNTE3MWEyMDhhNWE1ZjdmZDY1YjQ0M2E5ZDg0NzhlMT9zPTEwMCZyPXgmZD1yZXRybyIsImlhdCI6MTU2NTA4MjMxNywiZXhwIjoxNTY2ODEwMzE3fQ.eu8GqQa77t_6_UclOPvwM1gMz0TBHIKGYhpKjWtaxrQ",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "new rdi team",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "new sport team description",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "url",
+							"value": "www.google.fr",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"description": "",
+							"type": "file",
+							"src": "64682442_10214909532240060_8456431851500732416_n.jpg",
+							"disabled": true
+						},
+						{
+							"key": "memebers",
+							"value": "Montassar Laribi",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "memebers",
+							"value": "Idriss Mahjoubi",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "memebers",
+							"value": "Flen flen",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get rdis",
+			"request": {
+				"url": "http://localhost:4000/api/rdi/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete rdi by Id",
+			"request": {
+				"url": "http://localhost:4000/api/rdi/delete/5d4957fcccd8d64f745dcb37",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNDgwMjllMmUzZjgzMGE1MGM0NWJjNCIsInVzZXJuYW1lIjoibW9udGEiLCJlbWFpbCI6ImlkcmlzLm1haGpvdWJpQGVzcHJpdC50bnhjeCIsImF2YXRhciI6Imh0dHA6Ly93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci8wNTE3MWEyMDhhNWE1ZjdmZDY1YjQ0M2E5ZDg0NzhlMT9zPTEwMCZyPXgmZD1yZXRybyIsImlhdCI6MTU2NTA4MjMxNywiZXhwIjoxNTY2ODEwMzE3fQ.eu8GqQa77t_6_UclOPvwM1gMz0TBHIKGYhpKjWtaxrQ",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get rdi by Id",
+			"request": {
+				"url": "http://localhost:4000/api/rdi/id/5d4959742bc82f492c1e634f",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Search rid by title",
+			"request": {
+				"url": {
+					"raw": "http://localhost:4000/api/rdi/search?title=new",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"rdi",
+						"search"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "new",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 let newsModel = require('../models/departement');
-const upload = require('../utils/Uploader');
+const {upload} = require('../utils/Uploader');
 
 /* GET home page. */
 

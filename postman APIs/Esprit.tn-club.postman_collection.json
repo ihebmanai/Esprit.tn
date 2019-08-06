@@ -1,0 +1,260 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Esprit.tn/club",
+		"_postman_id": "ed29e74f-5039-3a92-b9f5-62412e3ac307",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all clubs",
+			"request": {
+				"url": "http://localhost:4000/api/club",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add Club",
+			"request": {
+				"url": "http://localhost:4000/api/club/add",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNDgwMjllMmUzZjgzMGE1MGM0NWJjNCIsInVzZXJuYW1lIjoibW9udGEiLCJlbWFpbCI6ImlkcmlzLm1haGpvdWJpQGVzcHJpdC50bnhjeCIsImF2YXRhciI6Imh0dHA6Ly93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci8wNTE3MWEyMDhhNWE1ZjdmZDY1YjQ0M2E5ZDg0NzhlMT9zPTEwMCZyPXgmZD1yZXRybyIsImlhdCI6MTU2NTA4MjMxNywiZXhwIjoxNTY2ODEwMzE3fQ.eu8GqQa77t_6_UclOPvwM1gMz0TBHIKGYhpKjWtaxrQ",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "new club",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "sports",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "sport",
+							"value": "team",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "new sport team description",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "url",
+							"value": "www.google.fr",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"value": "",
+							"description": "",
+							"type": "file"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update Club",
+			"request": {
+				"url": "http://localhost:4000/api/club/update/5d4946803b606c17c860089d",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNDgwMjllMmUzZjgzMGE1MGM0NWJjNCIsInVzZXJuYW1lIjoibW9udGEiLCJlbWFpbCI6ImlkcmlzLm1haGpvdWJpQGVzcHJpdC50bnhjeCIsImF2YXRhciI6Imh0dHA6Ly93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci8wNTE3MWEyMDhhNWE1ZjdmZDY1YjQ0M2E5ZDg0NzhlMT9zPTEwMCZyPXgmZD1yZXRybyIsImlhdCI6MTU2NTA4MjMxNywiZXhwIjoxNTY2ODEwMzE3fQ.eu8GqQa77t_6_UclOPvwM1gMz0TBHIKGYhpKjWtaxrQ",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "old club",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "sports",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "sport",
+							"value": "team",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "new sport team description",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "url",
+							"value": "www.google.fr",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"value": "",
+							"description": "",
+							"type": "file"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get club by Id",
+			"request": {
+				"url": "http://localhost:4000/api/club/id/5d4946803b606c17c860089d",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get club by type",
+			"request": {
+				"url": {
+					"raw": "http://localhost:4000/api/club/type?type=sports",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"club",
+						"type"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "sports",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get sports club by sport type",
+			"request": {
+				"url": {
+					"raw": "http://localhost:4000/api/club/sporttype?sport=team",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"club",
+						"sporttype"
+					],
+					"query": [
+						{
+							"key": "sport",
+							"value": "team",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Search clubs by title",
+			"request": {
+				"url": {
+					"raw": "http://localhost:4000/api/club/search?title=ol",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"club",
+						"search"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "ol",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Club by Id",
+			"request": {
+				"url": "http://localhost:4000/api/club/delete/5d4946803b606c17c860089d",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNDgwMjllMmUzZjgzMGE1MGM0NWJjNCIsInVzZXJuYW1lIjoibW9udGEiLCJlbWFpbCI6ImlkcmlzLm1haGpvdWJpQGVzcHJpdC50bnhjeCIsImF2YXRhciI6Imh0dHA6Ly93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci8wNTE3MWEyMDhhNWE1ZjdmZDY1YjQ0M2E5ZDg0NzhlMT9zPTEwMCZyPXgmZD1yZXRybyIsImlhdCI6MTU2NTA4MjMxNywiZXhwIjoxNTY2ODEwMzE3fQ.eu8GqQa77t_6_UclOPvwM1gMz0TBHIKGYhpKjWtaxrQ",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

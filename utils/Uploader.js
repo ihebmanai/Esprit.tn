@@ -26,9 +26,12 @@ const multer = require('multer');
         fileFilter: fileFilter
     });
     
+    var uploadTwo = multer({ storage : storage ,
+        limits: {
+            fileSize: 1024 * 1024 * 5
+        }}).array('files',2);
 
-
-module.exports = upload;
+module.exports = {upload,uploadTwo};
 
 
 
