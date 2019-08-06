@@ -1,5 +1,5 @@
 var mongoose = require('mongoose')
-
+const { clubTypes, sportTypes } = require('../enums/club.types');
 var Schema=mongoose.Schema;
 var clubSchema = mongoose.Schema({
 
@@ -11,12 +11,12 @@ var clubSchema = mongoose.Schema({
     },
     type :{
         type:String,
-        enum:['sportif','autres'],
+        enum:clubTypes,
         required:false
     },
     sport :{
         type:String,
-        enum:['indiv','equipe'],
+        enum:sportTypes,
         required:false
     },
     url :{
@@ -28,5 +28,5 @@ var clubSchema = mongoose.Schema({
         required:false
     }
 })
-var club =mongoose.model('club',clubSchema,'club');
+var club =mongoose.model('club',clubSchema);
 module.exports=club;

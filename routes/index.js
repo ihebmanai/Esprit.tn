@@ -2,7 +2,7 @@ const router = require('express').Router();
 
 const indexRouter = require('./index');
 const userRoutes = require('./user.route');
-const clubRouter = require('./club');
+const clubRouter = require('./club.route');
 const eventRouter = require('./event.route');
 const challengesRouter = require('./challenges');
 const unityRouter = require('./unity');

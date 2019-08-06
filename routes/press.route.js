@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const passport = require('passport');
-var pressModel = require('../models/presse.model');
+var { PressModel } = require('../models/index');
 const { uploadTwo } = require('../utils/Uploader');
 const path = require('path');
 const { allowedImages, allowedFiles } = require('../enums/fileExtentions');
@@ -9,8 +9,7 @@ const { allowedImages, allowedFiles } = require('../enums/fileExtentions');
 @Route : press/
 */
 router.get('/', (req, res) => {
-  pressModel
-    .find({ archived: false })
+  PressModel.find({ archived: false })
     .sort('-date')
     .then(data => {
       res.json(data);
@@ -22,8 +21,7 @@ router.get('/', (req, res) => {
 */
 router.get('/archived', passport.authenticate('jwt', { session: false }), (req, res) => {
   var users = null;
-  pressModel
-    .find({ archived: true })
+  PressModel.find({ archived: true })
     .sort('-date')
     .then(data => {
       res.json(data);
@@ -35,8 +33,7 @@ router.get('/archived', passport.authenticate('jwt', { session: false }), (req, 
 */
 router.get('/getAll', passport.authenticate('jwt', { session: false }), (req, res) => {
   var users = null;
-  pressModel
-    .find()
+  PressModel.find()
     .sort('-date')
     .then(data => {
       res.json(data);
@@ -60,7 +57,7 @@ router.post('/add', passport.authenticate('jwt', { session: false }), (req, res)
         }
       });
     }
-    newPress = new pressModel({
+    newPress = new PressModel({
       title: req.body.title,
       description: req.body.description,
       url: req.body.url,
@@ -111,14 +108,13 @@ router.put('/update/:id', passport.authenticate('jwt', { session: false }), (req
     if (img.length > 0) {
       eventUpdated.image = img;
     }
-    pressModel
-      .findOneAndUpdate(
-        query,
-        {
-          $set: eventUpdated
-        },
-        { new: true }
-      )
+    PressModel.findOneAndUpdate(
+      query,
+      {
+        $set: eventUpdated
+      },
+      { new: true }
+    )
       .then(event => res.json(event))
       .catch(err => res.status(400).json(err));
   });
@@ -131,14 +127,13 @@ router.put('/archive/:id', passport.authenticate('jwt', { session: false }), (re
   let query = {
     _id: req.params.id
   };
-  pressModel
-    .findOneAndUpdate(
-      query,
-      {
-        $set: { archived: true }
-      },
-      { new: true }
-    )
+  PressModel.findOneAndUpdate(
+    query,
+    {
+      $set: { archived: true }
+    },
+    { new: true }
+  )
     .then(event => res.json(event))
     .catch(err => res.status(400).json(err));
 });
@@ -150,14 +145,13 @@ router.put('/unarchive/:id', passport.authenticate('jwt', { session: false }), (
   let query = {
     _id: req.params.id
   };
-  pressModel
-    .findOneAndUpdate(
-      query,
-      {
-        $set: { archived: false }
-      },
-      { new: true }
-    )
+  PressModel.findOneAndUpdate(
+    query,
+    {
+      $set: { archived: false }
+    },
+    { new: true }
+  )
     .then(event => res.json(event))
     .catch(err => res.status(400).json(err));
 });
@@ -173,8 +167,7 @@ router.delete('/delete/:id', passport.authenticate('jwt', { session: false }), f
   let query = {
     _id: req.params.id
   };
-  pressModel
-    .remove()
+  PressModel.remove()
     .then(press => res.status(204).json(press))
     .catch(err => res.status(400).json(err));
 });
@@ -187,8 +180,7 @@ router.get('/get/:id', function(req, res) {
     _id: req.params.id,
     archived: false
   };
-  pressModel
-    .findOne(query)
+  PressModel.findOne(query)
     .then(data => {
       res.json(data);
     })
@@ -202,8 +194,7 @@ router.get('/archived/:id', passport.authenticate('jwt', { session: false }), fu
   let query = {
     _id: req.params.id
   };
-  pressModel
-    .findOne(query)
+  PressModel.findOne(query)
     .then(data => {
       res.json(data);
     })
@@ -221,8 +212,7 @@ router.get('/allbytype', passport.authenticate('jwt', { session: false }), funct
   let query = {
     type: req.query.type
   };
-  pressModel
-    .find(query)
+  PressModel.find(query)
     .sort('-date')
     .then(data => {
       res.json(data);
@@ -237,8 +227,7 @@ router.get('/bytype', function(req, res, next) {
     type: req.query.type,
     archived: false
   };
-  pressModel
-    .find(query)
+  PressModel.find(query)
     .sort('-date')
     .then(data => {
       res.json(data);
@@ -251,8 +240,7 @@ router.get('/search', function(req, res) {
     title: new RegExp(title, 'i'),
     archived: false
   };
-  pressModel
-    .find(query)
+  PressModel.find(query)
     .sort('-date')
     .then(data => {
       res.json(data);
@@ -265,8 +253,7 @@ router.get('/searchAll', passport.authenticate('jwt', { session: false }), funct
   let query = {
     title: new RegExp(title, 'i')
   };
-  pressModel
-    .find(query)
+  PressModel.find(query)
     .sort('-date')
     .then(data => {
       res.json(data);
